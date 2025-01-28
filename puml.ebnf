@@ -1,0 +1,115 @@
+start                  : startuml statement* enduml
+
+startuml               : "@startuml"i puml_name? EOL
+enduml                 : "@enduml"i EOL?
+
+puml_name              : CNAME
+
+statement              : ( component | ( relation component_style? description? ) ) EOL
+component              : ( ( ( interface_old | component_old | default_component | bracket_component ) alias? component_style? )
+                       |   ( nested_component alias? component_style? statement_block                                          ) )
+
+
+component_old          : "[" component_old_name "]"
+interface_old          : "()" interface_old_name
+
+component_old_name     : CNAME | BRACKET_NAME
+interface_old_name     : CNAME
+
+default_component      : component_type default_component_name?
+bracket_component      : component_type component_old
+
+default_component_name : CNAME
+
+nested_component       : ( default_component | bracket_component )
+
+statement_block        : "{" EOL statement* "}"
+
+alias                  : "as"i CNAME
+
+relation               : relation_object arrow relation_object
+relation_object        : CNAME | component_old | interface_old
+
+arrow                  : arrow_ldecor? ( arrow_base~1 | ( arrow_base* arrow_center arrow_base* ) ) arrow_rdecor?
+
+EOL                    : /\n/
+
+CNAME                  : STRING | NAME
+
+STRING                 : /"[^"]+"/
+NAME                   : /[_\w\-]+/i
+BRACKET_NAME           : /[_\w\-\\ ]+/i
+HEX                    : /[a-z\d]/i
+NUMBER                 : /\d+/
+
+component_type         : COMPONENT_TYPE
+COMPONENT_TYPE         : "artifact"i
+                       | "card"i
+                       | "cloud"i
+                       | "component"i
+                       | "database"i
+                       | "file"i
+                       | "folder"i
+                       | "frame"i
+                       | "hexagon"i
+                       | "interface"i
+                       | "node"i
+                       | "package"i
+                       | "frame"i
+                       | "queue"i
+                       | "rectangle"i
+                       | "stack"i
+                       | "storage"i
+
+arrow_base             : /[\.\-=]+/
+
+arrow_ldecor           : "<" | "*" |  "0" | "0)" | "^" | "@" | "#" | ")"
+arrow_rdecor           : ">" | "*" |  "0" | "(0" | "^" | "@" | "#" | "("
+arrow_cdecor           : "0" | "(0" | "0)" | "(0)"
+
+arrow_center           : arrow_base ( ( ( "[" arrow_style "]" )? direction? arrow_cdecor? )
+                                    | ( direction? "[" arrow_style "]"                    ) ) arrow_base
+
+direction              : ( "u"i | "up"i )
+                       | ( "r"i | "ri"i | "right"i )
+                       | ( "d"i | "do"i | "down"i )
+                       | ( "l"i | "le"i | "left"i )
+
+COLOR_LITERAL          : NAME
+COLOR_HEX              : HEX
+
+COLOR_COMPONENT_COMMON : COLOR_HEX~3 | COLOR_HEX~6 | COLOR_HEX~8 | COLOR_LITERAL
+
+COLOR_COMPONENT_GRAD   : COLOR_COMPONENT_COMMON ( "|" | "-" | "/" | "\\" ) COLOR_COMPONENT_COMMON
+
+COLOR_ARROW_COMMON     : COLOR_HEX+ | COLOR_LITERAL
+
+COLOR_ARROW_GRAD       : COLOR_ARROW_COMMON ( "|" | "-" | "/" | "\\" ) COLOR_ARROW_COMMON
+
+component_style        : ( ( "#" component_color ( ";" component_attr )* ";"? )
+                       |   ( "#" component_attr  ( ";" component_attr )* ";"? ) )
+
+component_attr         : ( ( COMPONENT_LINE_COLOR ( "." COMPONENT_LINE_ATTR )? ( ":" component_color )? )
+                       |   ( COMPONENT_TEXT_COLOR ( ":" component_color )?                              ) )
+
+component_color        : COLOR_COMPONENT_GRAD | COLOR_COMPONENT_COMMON
+
+COMPONENT_LINE_ATTR    : ( "dashed"i | "bold"i | "dotted"i )
+COMPONENT_TEXT_COLOR   : "text"i
+COMPONENT_LINE_COLOR   : "line"i
+
+arrow_style            : ( ( "#" arrow_color  ( ( "," | ";" ) arrow_attr )* )
+                       |   ( arrow_attr ( ( "," | ";" ) arrow_attr )*       ) )
+
+arrow_attr             : ( ( ARROW_THICKNESS_ATTR NUMBER )
+                       |   ( ARROW_LINE_STYLE_ATTR       ) )
+
+arrow_color            : COLOR_ARROW_GRAD | COLOR_ARROW_COMMON
+
+ARROW_LINE_STYLE_ATTR  : "bold"i | "dashed"i | "dotted"i | "hidden"i | "plain"i
+ARROW_THICKNESS_ATTR   : "thickness="i
+
+description            : ":" /[^\s][^\n]*/
+
+%import common.WS
+%ignore WS
