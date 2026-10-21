@@ -45,9 +45,13 @@ export function createGrammarHighlighter() {
 
 const isSampleFile = (file) => SAMPLE_EXTENSIONS.includes(path.extname(file));
 
+// The Vega files (tests/vega) start with a YAML header between two "---" lines, before @startuml.
+// It is a test setting, not PlantUML code, so it is ignored: samples are read as if it did not exist.
+const stripYamlHeader = (code) => code.replace(/^---\n[\s\S]*?\n---\n/, '');
+
 // Reads one sample: { file, name, description, lang, body }.
 function readSample(dir, file) {
-  const code = fs.readFileSync(path.join(dir, file), 'utf8').replace(/\r\n/g, '\n');
+  const code = stripYamlHeader(fs.readFileSync(path.join(dir, file), 'utf8').replace(/\r\n/g, '\n'));
   const name = path.basename(file, path.extname(file));
   // Optional one-line description of what the sample tests: <name>.description.txt
   const descriptionFile = path.join(dir, `${name}.description.txt`);

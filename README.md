@@ -86,7 +86,7 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 | --- | --- |
 | `syntaxes/` | The TextMate grammar (`source.wsd`) and the Markdown injection grammar (`codeblock.json`), taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT). |
 | `tests/samples/` | Hand-picked PlantUML samples used to test the grammar, with an optional `<name>.description.txt` explaining what each one tests. Each one has a scope snapshot and SVG renders. |
-| `tests/vega/` | The Vega corpus: the non-regression tests of PlantUML, copied from the PlantUML repository (514 `.puml` files in folders). Shown in the gallery, without snapshots for now. |
+| `tests/vega/` | The Vega corpus: the non-regression tests of PlantUML, copied from the PlantUML repository (514 `.puml` files in folders). Shown in the gallery, without snapshots for now. The YAML header that most files have before `@startuml` is a test setting, not PlantUML code: it is ignored. |
 | `tests/scopes/` | For each sample, the TextMate scopes of every token (snapshots). |
 | `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes. |
 | `tools/` | Node.js scripts that generate and check the files above and build the gallery. |

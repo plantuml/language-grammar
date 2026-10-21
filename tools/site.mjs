@@ -37,7 +37,7 @@ const SECTIONS = [
     key: 'vega',
     title: 'Vega corpus',
     summary:
-      'The non-regression tests of PlantUML (Vega), copied from the PlantUML repository. They are real PlantUML sources, grouped by feature.',
+      'The non-regression tests of PlantUML (Vega), copied from the PlantUML repository. They are real PlantUML sources, grouped by feature. The YAML header that most of these files have before @startuml is a test setting, not PlantUML code: it is not shown here.',
     withScopes: false,
   },
 ];
