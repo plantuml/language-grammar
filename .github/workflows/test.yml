@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  highlighting:
+    name: Grammar highlighting snapshots
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Fails if tests/scopes or tests/render differ from what the grammar produces.
+      - name: Check snapshots and renders
+        run: npm test
+
+      # On failure, regenerate the files so the expected result can be downloaded and compared.
+      - name: Regenerate files
+        if: failure()
+        run: npm run build
+
+      - name: Upload regenerated files
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regenerated-tests
+          path: tests/

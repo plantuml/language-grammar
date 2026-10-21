@@ -15,5 +15,49 @@ Formal grammar definition for the PlantUML language, designed for syntax parsing
   - **Online editors**: Such as GitPod or web-based IDEs.
   - **Language servers (LSP)**: Providing advanced features like autocompletion and diagnostics.
 
+## Repository layout
+
+| Path | Content |
+| --- | --- |
+| `syntaxes/` | The TextMate grammar (`source.wsd`), currently the one used by GitHub Linguist, taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT). |
+| `tests/samples/` | PlantUML samples used to test the grammar. |
+| `tests/scopes/` | For each sample, the TextMate scopes assigned to every token (regression snapshots). |
+| `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes. |
+| `tools/` | Scripts that generate and check the files above. |
+| `puml.ebnf` | Experimental reference grammar (Lark dialect), not used for highlighting. |
+
+## Highlighting preview
+
+GitHub highlights code with TextMate grammars. To see the result of the grammar in this repository, the samples are rendered with [Shiki](https://shiki.style), which uses the same TextMate engine and the GitHub themes. The result is very close to what GitHub displays, but it is not guaranteed to be pixel-identical.
+
+### `sequence-hello-world.puml`
+
+```plantuml
+@startuml
+Alice -> Bob: Hello World
+Bob --> Alice: Hi!
+@enduml
+```
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="tests/render/sequence-hello-world.dark.svg">
+  <img alt="sequence-hello-world.puml highlighted with the PlantUML grammar" src="tests/render/sequence-hello-world.light.svg">
+</picture>
+
+## Running the tests
+
+Requires Node.js 22 or later.
+
+```
+cd tools
+npm ci
+npm run build   # regenerate tests/scopes and tests/render
+npm test        # fail if the generated files are out of date
+```
+
+To add a test, drop a `.puml` file in `tests/samples/`, run `npm run build`, review the generated scopes and SVG files, and commit them together with the sample. The same check runs on every push through GitHub Actions.
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
+
+The TextMate grammar in `syntaxes/` derives from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml), Copyright (c) 2016 jebbs, also under the MIT License (see `syntaxes/LICENSE.vscode-plantuml.txt`).

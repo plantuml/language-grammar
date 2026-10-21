@@ -1,0 +1,16 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | Alice -> Bob: Hello World
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+      "->"  diagram.source.wsd keyword.control.note.source.wsd
+      "Bob"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " Hello World"  diagram.source.wsd meta.comment.message.link.source.wsd
+  3 | Bob --> Alice: Hi!
+      "Bob"  diagram.source.wsd support.variable.source.wsd
+      "-->"  diagram.source.wsd keyword.control.note.source.wsd
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " Hi!"  diagram.source.wsd meta.comment.message.link.source.wsd
+  4 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd
