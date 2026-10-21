@@ -2,6 +2,14 @@
 
 Syntax definitions for the PlantUML language, designed for syntax highlighting, parsing, validation, and editor integration.
 
+[![Highlighting gallery](https://img.shields.io/badge/Highlighting_gallery-open_it-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://plantuml.github.io/language-grammar/)
+
+[![Test](https://github.com/plantuml/language-grammar/actions/workflows/test.yml/badge.svg)](https://github.com/plantuml/language-grammar/actions/workflows/test.yml)
+[![Pages](https://github.com/plantuml/language-grammar/actions/workflows/pages.yml/badge.svg)](https://github.com/plantuml/language-grammar/actions/workflows/pages.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+**See how PlantUML code is highlighted, live: <https://plantuml.github.io/language-grammar/>**
+
 ## What we are trying to do
 
 When a `.puml` file is displayed on GitHub, its colors come from a **TextMate grammar** declared in [GitHub Linguist](https://github.com/github-linguist/linguist). Today, Linguist takes this grammar from a third-party project, [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml), at a fixed commit (see the [vendor README](https://github.com/github-linguist/linguist/blob/main/vendor/README.md)).
@@ -86,7 +94,7 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 
 ## Highlighting preview
 
-**Gallery: <https://plantuml.github.io/language-grammar/>**
+The [gallery](https://plantuml.github.io/language-grammar/) shows every sample with a theme switch. Here are the same samples as pictures:
 
 ### `sequence-hello-world.puml`
 
