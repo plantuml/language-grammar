@@ -11,22 +11,18 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { load as loadYaml } from 'js-yaml';
-import { createHighlighter } from 'shiki';
+import {
+  root,
+  scopesDir,
+  renderDir,
+  THEMES,
+  ROOT_SCOPES,
+  escapeXml,
+  createGrammarHighlighter,
+  listSamples,
+} from './common.mjs';
 
-const root = path.resolve(import.meta.dirname, '..');
-const samplesDir = path.join(root, 'tests', 'samples');
-const scopesDir = path.join(root, 'tests', 'scopes');
-const renderDir = path.join(root, 'tests', 'render');
-const grammarFile = path.join(root, 'syntaxes', 'plantuml.yaml-tmLanguage');
-const injectionFile = path.join(root, 'syntaxes', 'codeblock.json');
-
-const THEMES = { light: 'github-light-default', dark: 'github-dark-default' };
 const BORDER = { light: '#d1d9e0', dark: '#3d444d' };
-const LANG = 'plantuml';
-const MARKDOWN_SCOPE = 'text.html.markdown';
-// Root scopes are the same on every line of a file, so they are left out of the scope snapshots.
-const ROOT_SCOPES = new Set(['source.wsd', MARKDOWN_SCOPE]);
 
 const CHAR_WIDTH = 8.4;
 const LINE_HEIGHT = 20;
@@ -34,19 +30,6 @@ const FONT_SIZE = 14;
 const PADDING = 16;
 const FONT_FAMILY =
   "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace";
-
-const escapeXml = (s) =>
-  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-function loadGrammars() {
-  const grammar = loadYaml(fs.readFileSync(grammarFile, 'utf8'));
-  // The injection grammar makes ```plantuml fenced blocks of Markdown files use the PlantUML grammar.
-  const injection = JSON.parse(fs.readFileSync(injectionFile, 'utf8'));
-  return [
-    { ...grammar, name: LANG },
-    { ...injection, name: 'plantuml-codeblock', injectTo: [MARKDOWN_SCOPE] },
-  ];
-}
 
 // Splits the tokens of a highlighted sample into lines of { text, color, fontStyle }.
 function toSvg(tokenResult, themeKind) {
@@ -109,27 +92,11 @@ function toScopes(code, tokenResult) {
 async function main() {
   const check = process.argv.includes('--check');
 
-  const highlighter = await createHighlighter({
-    themes: Object.values(THEMES),
-    langs: ['markdown', ...loadGrammars()],
-  });
-
-  const samples = fs
-    .readdirSync(samplesDir)
-    .filter((f) => ['.puml', '.iuml', '.plantuml', '.md'].includes(path.extname(f)))
-    .sort();
-
-  if (samples.length === 0) {
-    console.error('No sample found in tests/samples');
-    process.exit(1);
-  }
+  const highlighter = await createGrammarHighlighter();
+  const samples = listSamples();
 
   const expected = new Map();
-  for (const file of samples) {
-    const name = path.basename(file, path.extname(file));
-    const lang = path.extname(file) === '.md' ? 'markdown' : LANG;
-    const code = fs.readFileSync(path.join(samplesDir, file), 'utf8').replace(/\r\n/g, '\n');
-    const body = code.endsWith('\n') ? code.slice(0, -1) : code;
+  for (const { name, lang, body } of samples) {
 
     for (const [kind, theme] of Object.entries(THEMES)) {
       const tokenResult = highlighter.codeToTokens(body, {

@@ -28,6 +28,8 @@ Formal grammar definition for the PlantUML language, designed for syntax parsing
 
 ## Highlighting preview
 
+**Gallery: <https://plantuml.github.io/language-grammar/>**. It is rebuilt by GitHub Actions on every push to `main` and shows all the samples of `tests/samples`, highlighted in the GitHub light and dark themes. Hovering a token shows its TextMate scopes. To build it locally, run `npm run site` in `tools/` and open `site/index.html`.
+
 GitHub highlights code with TextMate grammars. To see the result of the grammar in this repository, the samples are rendered with [Shiki](https://shiki.style), which uses the same TextMate engine and the GitHub themes. The result is very close to what GitHub displays, but it is not guaranteed to be pixel-identical.
 
 ### `sequence-hello-world.puml`
