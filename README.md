@@ -94,6 +94,31 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 | `.github/workflows/` | `test.yml` (checks) and `pages.yml` (gallery). |
 | `puml.ebnf` | Experimental reference grammar (Lark dialect), not used for highlighting. |
 
+## Which files really configure the highlighting
+
+Only two files define how PlantUML code is colored. `tools/common.mjs` loads them (`grammarFile` and `injectionFile`) and passes them to Shiki.
+
+**Files that are used for highlighting**
+
+| File | Role |
+| --- | --- |
+| `syntaxes/plantuml.yaml-tmLanguage` | The main TextMate grammar (scope `source.wsd`). It is the only file that says how PlantUML tokens are scoped, and therefore colored. |
+| `syntaxes/codeblock.json` | The injection grammar (scope `markdown.plantuml.codeblock`): it applies `source.wsd` inside the `plantuml` fenced blocks of Markdown files. |
+
+The colors themselves do not come from a file of this repository: they come from the Shiki themes `github-light-default` and `github-dark-default`, set in `tools/common.mjs`.
+
+**Files that are not used for highlighting**
+
+| File | Why it is not used |
+| --- | --- |
+| `puml.ebnf` | Experimental formal grammar (Lark dialect), covering only a subset of the language. |
+| `data/list-keywords.txt` | Output of `plantuml.jar --list-keywords`. Only `tools/coverage.mjs` reads it, for an informational coverage report that never fails the build. |
+| `syntaxes/LICENSE.vscode-plantuml.txt` | License text of vscode-plantuml. |
+
+**Files that are generated from the grammar**
+
+`tests/scopes/` and `tests/render/` are produced by `npm run build` (`tools/render.mjs`), and `npm test` fails if they no longer match what the grammar produces. The gallery is built by `tools/site.mjs` from the `tests/` tree. The two workflows (`test.yml` and `pages.yml`) only run these scripts.
+
 ## Highlighting preview
 
 The [gallery](https://plantuml.github.io/language-grammar/) follows the tree of the `tests/` folder: `tests/samples/...` is published as `samples/...` and `tests/vega/...` as `vega/...`, with one page per folder, a theme switch, and the TextMate scopes of every token on hover. Here are two of the hand-picked samples as pictures:
