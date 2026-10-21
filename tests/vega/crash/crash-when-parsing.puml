@@ -1,0 +1,11 @@
+---
+output: debug, svg
+expected-description: (Error)
+expected-exception: IllegalStateException - This is a normal crash when PARSING
+expected-error-line: 1
+expected-error-message: You should send a mail to plantuml@gmail.com with this log java.lang.IllegalStateException: This is a normal crash when PARSING (Assumed diagram type: crash)
+expected-status: 400
+---
+@startcrash
+crash when parsing
+@endcrash

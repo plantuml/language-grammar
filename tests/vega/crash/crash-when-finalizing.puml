@@ -1,0 +1,11 @@
+---
+output: debug, svg
+expected-description: (Error)
+expected-exception: IllegalStateException - This is a normal crash when FINALIZING
+expected-error-line: 0
+expected-error-message: Fatal crash error, you should send a mail to plantuml@gmail.com with: java.lang.IllegalStateException: This is a normal crash when FINALIZING
+expected-status: 400
+---
+@startcrash
+crash when finalizing
+@endcrash

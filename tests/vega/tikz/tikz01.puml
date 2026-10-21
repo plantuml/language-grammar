@@ -1,0 +1,7 @@
+---
+output: latex
+expected-description: (2 participants)
+---
+@startuml
+alice -> bob : hello
+@enduml

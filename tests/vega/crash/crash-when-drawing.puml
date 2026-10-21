@@ -1,0 +1,9 @@
+---
+output: debug, svg
+expected-description: Crash Diagram
+expected-exception: IllegalStateException - This is a normal crash when DRAWING
+expected-status: 503
+---
+@startcrash
+crash when drawing
+@endcrash

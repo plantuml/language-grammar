@@ -1,0 +1,19 @@
+---
+output: latex, svg
+expected-description: (2 participants)
+---
+@startuml
+title Embedded with scale 0.5
+Bob -> Alice : request
+note right
+{{
+scale 0.5
+actor User
+usecase Login
+usecase Logout
+User --> Login
+User --> Logout
+}}
+end note
+Alice -> Bob : response
+@enduml

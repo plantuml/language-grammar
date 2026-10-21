@@ -1,0 +1,16 @@
+---
+output: svg
+expected-description: (4 entities)
+---
+@startuml
+!pragma svginteractive true
+hide empty members
+class A
+class B
+class C
+class D
+
+A [key1] *- "1" B : holds >
+B [key2a] o-- [key2b] C : holds >
+C [key3] - "1" D : holds >
+@enduml

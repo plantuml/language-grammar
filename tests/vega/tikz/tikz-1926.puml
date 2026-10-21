@@ -1,0 +1,11 @@
+---
+output: latex, svg
+expected-description: activity3
+---
+@startuml
+:Test 
+{{
+node N
+}}
+;
+@enduml

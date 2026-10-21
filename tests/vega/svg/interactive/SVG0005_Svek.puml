@@ -1,0 +1,18 @@
+---
+output: svg
+expected-description: (2 entities)
+---
+@startuml
+!pragma svginteractive true
+
+component c1 {
+  portout p1
+}
+
+component c2 {
+  portin p2
+}
+
+p1 --> p2
+
+@enduml

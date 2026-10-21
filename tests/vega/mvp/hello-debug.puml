@@ -1,0 +1,13 @@
+---
+output: debug
+expected-debug:
+  contains:
+    - Alice
+    - Bob
+    - hello
+  not-contains: ERROR
+expected-status: 0
+---
+@startuml
+Alice -> Bob : hello
+@enduml
