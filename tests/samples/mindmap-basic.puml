@@ -1,0 +1,8 @@
+@startmindmap
+title My mind map
+* Root
+** Child one
+***[#Orange] Colored
+** Child two
+-- Left side
+@endmindmap

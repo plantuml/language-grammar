@@ -1,0 +1,45 @@
+  1 | @startjson
+      "@startjson"  meta.diagram.json.wsd keyword.control.diagram.wsd
+  2 | {
+      "{"  meta.diagram.json.wsd meta.structure.dictionary.json punctuation.definition.dictionary.begin.json
+  3 |   "name": "Alice",
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.begin.json
+      "name"  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.end.json
+      ":"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.key-value.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json string.quoted.double.json punctuation.definition.string.begin.json
+      "Alice"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json string.quoted.double.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json string.quoted.double.json punctuation.definition.string.end.json
+      ","  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.pair.json
+  4 |   "age": 30,
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.begin.json
+      "age"  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.end.json
+      ":"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.key-value.json
+      "30"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json constant.numeric.json
+      ","  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.pair.json
+  5 |   "tags": ["a", "b"],
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.begin.json
+      "tags"  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.end.json
+      ":"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.key-value.json
+      "["  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json punctuation.definition.array.begin.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json string.quoted.double.json punctuation.definition.string.begin.json
+      "a"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json string.quoted.double.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json string.quoted.double.json punctuation.definition.string.end.json
+      ","  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json punctuation.separator.array.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json string.quoted.double.json punctuation.definition.string.begin.json
+      "b"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json string.quoted.double.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json string.quoted.double.json punctuation.definition.string.end.json
+      "]"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json meta.structure.array.json punctuation.definition.array.end.json
+      ","  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.pair.json
+  6 |   "active": true
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.begin.json
+      "active"  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json
+      "\""  meta.diagram.json.wsd meta.structure.dictionary.json string.json support.type.property-name.json punctuation.support.type.property-name.end.json
+      ":"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json punctuation.separator.dictionary.key-value.json
+      "true"  meta.diagram.json.wsd meta.structure.dictionary.json meta.structure.dictionary.value.json constant.language.json
+  7 | }
+      "}"  meta.diagram.json.wsd meta.structure.dictionary.json punctuation.definition.dictionary.end.json
+  8 | @endjson
+      "@endjson"  meta.diagram.json.wsd keyword.control.diagram.wsd

@@ -1,0 +1,12 @@
+@startuml
+!include common.puml
+!$name = "Alice"
+!function $double($x)
+  !return $x + $x
+!endfunction
+' a comment
+/' a block
+   comment '/
+participant $name
+Alice -> Bob: %date()
+@enduml

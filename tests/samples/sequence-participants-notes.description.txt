@@ -1,0 +1,1 @@
+Sequence diagram: element types (participant, actor, database), the name that follows, `as`, colors, stereotypes, arrows with a label, a one-line note and a multi-line note whose text must not be colored as code.

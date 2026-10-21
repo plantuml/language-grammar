@@ -1,0 +1,50 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | !include common.puml
+      "!include"  diagram.source.wsd entity.name.function.preprocessings.source.wsd
+      "common"  diagram.source.wsd support.variable.source.wsd
+      "."  diagram.source.wsd keyword.control.note.source.wsd
+      "puml"  diagram.source.wsd support.variable.source.wsd
+  3 | !$name = "Alice"
+      "!$"  diagram.source.wsd
+      "name"  diagram.source.wsd support.variable.source.wsd
+      "="  diagram.source.wsd keyword.control.note.source.wsd
+      " \""  diagram.source.wsd
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+      "\""  diagram.source.wsd
+  4 | !function $double($x)
+      "!function"  diagram.source.wsd entity.name.function.preprocessings.source.wsd
+      " $"  diagram.source.wsd
+      "double"  diagram.source.wsd support.variable.source.wsd
+      "($"  diagram.source.wsd
+      "x"  diagram.source.wsd support.variable.source.wsd
+      ")"  diagram.source.wsd
+  5 |   !return $x + $x
+      "!return"  diagram.source.wsd entity.name.function.preprocessings.source.wsd
+      " $"  diagram.source.wsd
+      "x"  diagram.source.wsd support.variable.source.wsd
+      " + $"  diagram.source.wsd
+      "x"  diagram.source.wsd support.variable.source.wsd
+  6 | !endfunction
+      "!endfunction"  diagram.source.wsd entity.name.function.preprocessings.source.wsd
+  7 | ' a comment
+      "'"  diagram.source.wsd comment.line.comment.source.wsd
+      " a comment"  diagram.source.wsd comment.line.comment.source.wsd
+  8 | /' a block
+      "/'"  diagram.source.wsd comment.block.source.wsd
+      " a block"  diagram.source.wsd comment.block.source.wsd
+  9 |    comment '/
+      "   comment "  diagram.source.wsd comment.block.source.wsd
+      "'/"  diagram.source.wsd comment.block.source.wsd
+ 10 | participant $name
+      "participant"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      " $"  diagram.source.wsd
+      "name"  diagram.source.wsd support.variable.source.wsd
+ 11 | Alice -> Bob: %date()
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+      "->"  diagram.source.wsd keyword.control.note.source.wsd
+      "Bob"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " %date()"  diagram.source.wsd meta.comment.message.link.source.wsd
+ 12 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd

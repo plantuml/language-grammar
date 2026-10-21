@@ -1,0 +1,20 @@
+  1 | # Sequence diagram
+      "#"  markup.heading.markdown heading.1.markdown punctuation.definition.heading.markdown
+      "Sequence diagram"  markup.heading.markdown heading.1.markdown entity.name.section.markdown
+  2 | 
+  3 | A PlantUML block inside a Markdown file:
+      "A PlantUML block inside a Markdown file:"  meta.paragraph.markdown
+  4 | 
+  5 | ```plantuml
+      "```"  markup.fenced_code.block.markdown punctuation.definition.markdown
+      "plantuml"  markup.fenced_code.block.markdown fenced_code.block.language
+  6 | @startuml
+      "@startuml"  markup.fenced_code.block.markdown
+  7 | Alice -> Bob: Hello World
+      "Alice -> Bob: Hello World"  markup.fenced_code.block.markdown
+  8 | Bob --> Alice: Hi!
+      "Bob --> Alice: Hi!"  markup.fenced_code.block.markdown
+  9 | @enduml
+      "@enduml"  markup.fenced_code.block.markdown
+ 10 | ```
+      "```"  markup.fenced_code.block.markdown punctuation.definition.markdown

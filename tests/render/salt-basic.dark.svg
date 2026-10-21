@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="234" height="172" viewBox="0 0 234 172">
+<rect x="0.5" y="0.5" width="233" height="171" rx="6" fill="#0d1117" stroke="#3d444d"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#FF7B72">@startsalt</tspan></text>
+<text y="50"><tspan x="16.0" fill="#E6EDF3">{</tspan></text>
+<text y="70"><tspan x="32.8" fill="#79C0FF">Login</tspan><tspan x="74.8" fill="#E6EDF3">    | </tspan><tspan x="125.2" fill="#A5D6FF">&quot;MyName   &quot;</tspan></text>
+<text y="90"><tspan x="32.8" fill="#79C0FF">Password</tspan><tspan x="100.0" fill="#E6EDF3"> | </tspan><tspan x="125.2" fill="#A5D6FF">&quot;****     &quot;</tspan></text>
+<text y="110"><tspan x="16.0" fill="#E6EDF3">  [</tspan><tspan x="41.2" fill="#79C0FF">Cancel</tspan><tspan x="91.6" fill="#E6EDF3">] | [  </tspan><tspan x="150.4" fill="#79C0FF">OK</tspan><tspan x="167.2" fill="#E6EDF3">  ]</tspan></text>
+<text y="130"><tspan x="16.0" fill="#E6EDF3">}</tspan></text>
+<text y="150"><tspan x="16.0" fill="#FF7B72">@endsalt</tspan></text>
+</g>
+</svg>

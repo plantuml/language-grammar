@@ -1,0 +1,1 @@
+`@startyaml` contains YAML: the hybrid grammar hands it over to the YAML grammar.

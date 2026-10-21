@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="402" height="432" viewBox="0 0 402 432">
+<rect x="0.5" y="0.5" width="401" height="431" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startuml</tspan></text>
+<text y="50"><tspan x="16.0" fill="#CF222E">title</tspan><tspan x="66.4" fill="#953800">Order flow</tspan></text>
+<text y="70"><tspan x="16.0" fill="#CF222E">participant</tspan><tspan x="116.8" fill="#953800">Alice</tspan><tspan x="167.2" fill="#CF222E">as</tspan><tspan x="184.0" fill="#1F2328"> A</tspan></text>
+<text y="90"><tspan x="16.0" fill="#CF222E">actor</tspan><tspan x="66.4" fill="#0A3069">&quot;Bob B&quot;</tspan><tspan x="133.6" fill="#CF222E">as</tspan><tspan x="150.4" fill="#1F2328"> B </tspan><tspan x="175.6" fill="#0550AE">#LightBlue</tspan></text>
+<text y="110"><tspan x="16.0" fill="#CF222E">database</tspan><tspan x="91.6" fill="#953800">DB</tspan><tspan x="116.8" fill="#116329">&lt;&lt;storage&gt;&gt;</tspan></text>
+<text y="130"></text>
+<text y="150"><tspan x="16.0" fill="#1F2328">A </tspan><tspan x="32.8" fill="#CF222E">-&gt;</tspan><tspan x="49.6" fill="#1F2328"> B</tspan><tspan x="66.4" fill="#CF222E">:</tspan><tspan x="74.8" fill="#0A3069"> Place order</tspan></text>
+<text y="170"><tspan x="16.0" fill="#1F2328">B </tspan><tspan x="32.8" fill="#CF222E">--&gt;</tspan><tspan x="58.0" fill="#1F2328"> A </tspan><tspan x="83.2" fill="#CF222E">:</tspan><tspan x="91.6" fill="#0A3069"> Accepted</tspan></text>
+<text y="190"><tspan x="16.0" fill="#1F2328">A </tspan><tspan x="32.8" fill="#CF222E">-&gt;&gt;</tspan><tspan x="58.0" fill="#1F2328"> DB</tspan><tspan x="83.2" fill="#CF222E">:</tspan><tspan x="91.6" fill="#0A3069"> save</tspan></text>
+<text y="210"><tspan x="16.0" fill="#CF222E">note</tspan><tspan x="58.0" fill="#CF222E">left</tspan><tspan x="100.0" fill="#CF222E">of</tspan><tspan x="116.8" fill="#1F2328"> A </tspan><tspan x="142.0" fill="#0550AE">#yellow</tspan><tspan x="200.8" fill="#CF222E">:</tspan><tspan x="209.2" fill="#0A3069"> a short note</tspan></text>
+<text y="230"><tspan x="16.0" fill="#CF222E">note</tspan><tspan x="58.0" fill="#CF222E">over</tspan><tspan x="91.6" fill="#1F2328"> A, B</tspan></text>
+<text y="250"><tspan x="16.0" fill="#0A3069">  A note on several lines.</tspan></text>
+<text y="270"><tspan x="16.0" fill="#0A3069">  The words alt, loop and end are text here.</tspan></text>
+<text y="290"><tspan x="16.0" fill="#CF222E">end note</tspan></text>
+<text y="310"><tspan x="16.0" fill="#CF222E">alt</tspan><tspan x="41.2" fill="#1F2328"> success</tspan></text>
+<text y="330"><tspan x="16.0" fill="#1F2328">  A </tspan><tspan x="49.6" fill="#CF222E">-[#red]&gt;</tspan><tspan x="116.8" fill="#1F2328"> B</tspan><tspan x="133.6" fill="#CF222E">:</tspan><tspan x="142.0" fill="#0A3069"> ok</tspan></text>
+<text y="350"><tspan x="16.0" fill="#CF222E">else</tspan><tspan x="49.6" fill="#1F2328"> failure</tspan></text>
+<text y="370"><tspan x="16.0" fill="#1F2328">  B </tspan><tspan x="49.6" fill="#CF222E">-&gt;</tspan><tspan x="66.4" fill="#1F2328"> A</tspan><tspan x="83.2" fill="#CF222E">:</tspan><tspan x="91.6" fill="#0A3069"> error</tspan></text>
+<text y="390"><tspan x="16.0" fill="#CF222E">end</tspan></text>
+<text y="410"><tspan x="16.0" fill="#CF222E">@enduml</tspan></text>
+</g>
+</svg>

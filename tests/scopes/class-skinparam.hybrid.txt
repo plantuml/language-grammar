@@ -1,0 +1,51 @@
+  1 | @startuml
+      "@startuml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
+  2 | skinparam classAttributeIconSize 0
+      "skinparam"  meta.diagram.uml.wsd keyword.control.wsd
+      "classAttributeIconSize"  meta.diagram.uml.wsd variable.parameter.skinparam.wsd
+      "0"  meta.diagram.uml.wsd constant.numeric.wsd
+  3 | skinparam class {
+      "skinparam"  meta.diagram.uml.wsd keyword.control.wsd
+      "class"  meta.diagram.uml.wsd variable.parameter.skinparam.wsd
+      "{"  meta.diagram.uml.wsd keyword.operator.wsd
+  4 |   BackgroundColor #FEFECE
+      "BackgroundColor"  meta.diagram.uml.wsd variable.parameter.skinparam.wsd
+      "#FEFECE"  meta.diagram.uml.wsd constant.other.color.wsd
+  5 |   BorderColor black
+      "  BorderColor black"  meta.diagram.uml.wsd
+  6 | }
+      "}"  meta.diagram.uml.wsd keyword.operator.wsd
+  7 | hide empty members
+      "hide"  meta.diagram.uml.wsd keyword.control.wsd
+      "empty"  meta.diagram.uml.wsd keyword.control.wsd
+      "members"  meta.diagram.uml.wsd keyword.control.wsd
+  8 | 
+  9 | abstract class Animal <<entity>> {
+      "abstract"  meta.diagram.uml.wsd storage.type.element.wsd
+      "class"  meta.diagram.uml.wsd storage.type.element.wsd
+      "Animal"  meta.diagram.uml.wsd entity.name.type.wsd
+      "<<entity>>"  meta.diagram.uml.wsd entity.name.tag.stereotype.wsd
+      " {"  meta.diagram.uml.wsd
+ 10 |   - name : String
+      "  - name : String"  meta.diagram.uml.wsd
+ 11 |   + eat()
+      "  + eat()"  meta.diagram.uml.wsd
+ 12 | }
+      "}"  meta.diagram.uml.wsd
+ 13 | class Dog
+      "class"  meta.diagram.uml.wsd storage.type.element.wsd
+      "Dog"  meta.diagram.uml.wsd entity.name.type.wsd
+ 14 | Animal <|-- Dog : extends
+      "Animal "  meta.diagram.uml.wsd
+      "<|--"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " Dog "  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " extends"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 15 | Dog "1" *-- "many" Leg
+      "Dog "  meta.diagram.uml.wsd
+      "\"1\""  meta.diagram.uml.wsd string.quoted.double.wsd
+      "*--"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      "\"many\""  meta.diagram.uml.wsd string.quoted.double.wsd
+      " Leg"  meta.diagram.uml.wsd
+ 16 | @enduml
+      "@enduml"  meta.diagram.uml.wsd keyword.control.diagram.wsd

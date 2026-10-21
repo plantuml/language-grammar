@@ -1,0 +1,21 @@
+  1 | @startyaml
+      "@startyaml"  meta.diagram.yaml.wsd keyword.control.diagram.wsd
+  2 | name: Alice
+      "n"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml entity.name.tag.yaml
+      "ame"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml entity.name.tag.yaml
+      ":"  meta.diagram.yaml.wsd punctuation.separator.key-value.mapping.yaml
+      "A"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml
+      "lice"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml
+  3 | list:
+      "l"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml entity.name.tag.yaml
+      "ist"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml entity.name.tag.yaml
+      ":"  meta.diagram.yaml.wsd punctuation.separator.key-value.mapping.yaml
+  4 |   - one
+      "-"  meta.diagram.yaml.wsd punctuation.definition.block.sequence.item.yaml
+      "o"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml
+      "ne"  meta.diagram.yaml.wsd string.unquoted.plain.out.yaml
+  5 |   - 2
+      "-"  meta.diagram.yaml.wsd punctuation.definition.block.sequence.item.yaml
+      "2"  meta.diagram.yaml.wsd constant.numeric.integer.yaml
+  6 | @endyaml
+      "@endyaml"  meta.diagram.yaml.wsd keyword.control.diagram.wsd

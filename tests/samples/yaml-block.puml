@@ -1,0 +1,6 @@
+@startyaml
+name: Alice
+list:
+  - one
+  - 2
+@endyaml

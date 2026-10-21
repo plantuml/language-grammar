@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="209" height="192" viewBox="0 0 209 192">
+<rect x="0.5" y="0.5" width="208" height="191" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startjson</tspan></text>
+<text y="50"><tspan x="16.0" fill="#1F2328">{</tspan></text>
+<text y="70"><tspan x="32.8" fill="#116329">&quot;name&quot;</tspan><tspan x="83.2" fill="#1F2328">: </tspan><tspan x="100.0" fill="#0A3069">&quot;Alice&quot;</tspan><tspan x="158.8" fill="#1F2328">,</tspan></text>
+<text y="90"><tspan x="32.8" fill="#116329">&quot;age&quot;</tspan><tspan x="74.8" fill="#1F2328">: </tspan><tspan x="91.6" fill="#0550AE">30</tspan><tspan x="108.4" fill="#1F2328">,</tspan></text>
+<text y="110"><tspan x="32.8" fill="#116329">&quot;tags&quot;</tspan><tspan x="83.2" fill="#1F2328">: [</tspan><tspan x="108.4" fill="#0A3069">&quot;a&quot;</tspan><tspan x="133.6" fill="#1F2328">, </tspan><tspan x="150.4" fill="#0A3069">&quot;b&quot;</tspan><tspan x="175.6" fill="#1F2328">],</tspan></text>
+<text y="130"><tspan x="32.8" fill="#116329">&quot;active&quot;</tspan><tspan x="100.0" fill="#1F2328">: </tspan><tspan x="116.8" fill="#0550AE">true</tspan></text>
+<text y="150"><tspan x="16.0" fill="#1F2328">}</tspan></text>
+<text y="170"><tspan x="16.0" fill="#CF222E">@endjson</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+  1 | @startmindmap
+      "@startmindmap"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | title My mind map
+      "title"  diagram.source.wsd keyword.other.title.source.wsd
+      "My mind map"  diagram.source.wsd entity.name.function.title.source.wsd
+  3 | * Root
+      "* "  diagram.source.wsd
+      "Root"  diagram.source.wsd support.variable.source.wsd
+  4 | ** Child one
+      "** "  diagram.source.wsd
+      "Child"  diagram.source.wsd support.variable.source.wsd
+      "one"  diagram.source.wsd support.variable.source.wsd
+  5 | ***[#Orange] Colored
+      "***["  diagram.source.wsd
+      "#Orange"  diagram.source.wsd constant.numeric.colors.source.wsd
+      "] "  diagram.source.wsd
+      "Colored"  diagram.source.wsd support.variable.source.wsd
+  6 | ** Child two
+      "** "  diagram.source.wsd
+      "Child"  diagram.source.wsd support.variable.source.wsd
+      "two"  diagram.source.wsd support.variable.source.wsd
+  7 | -- Left side
+      "--"  diagram.source.wsd keyword.control.note.source.wsd
+      "Left"  diagram.source.wsd support.variable.source.wsd
+      "side"  diagram.source.wsd support.variable.source.wsd
+  8 | @endmindmap
+      "@endmindmap"  diagram.source.wsd keyword.control.diagram.source.wsd

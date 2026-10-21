@@ -1,0 +1,26 @@
+  1 | @startsalt
+      "@startsalt"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | {
+      "{"  diagram.source.wsd
+  3 |   Login    | "MyName   "
+      "Login"  diagram.source.wsd support.variable.source.wsd
+      "    | "  diagram.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "MyName   "  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+  4 |   Password | "****     "
+      "Password"  diagram.source.wsd support.variable.source.wsd
+      " | "  diagram.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "****     "  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+  5 |   [Cancel] | [  OK  ]
+      "  ["  diagram.source.wsd
+      "Cancel"  diagram.source.wsd support.variable.source.wsd
+      "] | [  "  diagram.source.wsd
+      "OK"  diagram.source.wsd support.variable.source.wsd
+      "  ]"  diagram.source.wsd
+  6 | }
+      "}"  diagram.source.wsd
+  7 | @endsalt
+      "@endsalt"  diagram.source.wsd keyword.control.diagram.source.wsd

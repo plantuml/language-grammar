@@ -1,0 +1,60 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | skinparam classAttributeIconSize 0
+      "skinparam"  diagram.source.wsd keyword.other.skinparam.source.wsd
+      "classAttributeIconSize"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      "0"  diagram.source.wsd string.quoted.double.skinparam.value.source.wsd
+  3 | skinparam class {
+      "skinparam"  diagram.source.wsd keyword.other.skinparam.source.wsd
+      "class"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      " {"  diagram.source.wsd
+  4 |   BackgroundColor #FEFECE
+      "BackgroundColor"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      "#FEFECE"  diagram.source.wsd string.quoted.double.skinparam.value.source.wsd
+  5 |   BorderColor black
+      "BorderColor"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      "black"  diagram.source.wsd string.quoted.double.skinparam.value.source.wsd
+  6 | }
+      "}"  diagram.source.wsd
+  7 | hide empty members
+      "hide"  diagram.source.wsd keyword.other.class.hideshow.source.wsd
+      "empty"  diagram.source.wsd support.variable.class.hideshow.source.wsd
+      "members"  diagram.source.wsd constant.numeric.class.hideshow.source.wsd
+  8 | 
+  9 | abstract class Animal <<entity>> {
+      "abstract class"  diagram.source.wsd keyword.other.class.group.source.wsd
+      "Animal"  diagram.source.wsd support.variable.class.group.source.wsd
+      "<<entity>>"  diagram.source.wsd string.quoted.double.class.definition.source.wsd
+      " {"  diagram.source.wsd
+ 10 |   - name : String
+      "- "  diagram.source.wsd keyword.other.class.fields.source.wsd
+      "name"  diagram.source.wsd support.variable.class.fields.source.wsd
+      " : "  diagram.source.wsd
+      "String"  diagram.source.wsd support.type.class.fields.source.wsd
+ 11 |   + eat()
+      "+ "  diagram.source.wsd keyword.other.class.function.source.wsd
+      "eat"  diagram.source.wsd support.variable.class.function.source.wsd
+      "()"  diagram.source.wsd
+ 12 | }
+      "}"  diagram.source.wsd
+ 13 | class Dog
+      "class"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "Dog"  diagram.source.wsd support.variable.source.wsd
+ 14 | Animal <|-- Dog : extends
+      "Animal"  diagram.source.wsd support.variable.source.wsd
+      "<|--"  diagram.source.wsd keyword.control.note.source.wsd
+      "Dog"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " extends"  diagram.source.wsd meta.comment.message.link.source.wsd
+ 15 | Dog "1" *-- "many" Leg
+      "Dog"  diagram.source.wsd support.variable.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "1"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "*--"  diagram.source.wsd keyword.control.note.source.wsd
+      " \""  diagram.source.wsd
+      "many"  diagram.source.wsd support.variable.source.wsd
+      "\" "  diagram.source.wsd
+      "Leg"  diagram.source.wsd support.variable.source.wsd
+ 16 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd

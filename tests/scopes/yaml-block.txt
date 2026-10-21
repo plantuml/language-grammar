@@ -1,0 +1,17 @@
+  1 | @startyaml
+      "@startyaml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | name: Alice
+      "name"  diagram.source.wsd support.variable.source.wsd
+      ": "  diagram.source.wsd
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+  3 | list:
+      "list"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+  4 |   - one
+      "-"  diagram.source.wsd keyword.control.note.source.wsd
+      "one"  diagram.source.wsd support.variable.source.wsd
+  5 |   - 2
+      "-"  diagram.source.wsd keyword.control.note.source.wsd
+      "2"  diagram.source.wsd support.variable.source.wsd
+  6 | @endyaml
+      "@endyaml"  diagram.source.wsd keyword.control.diagram.source.wsd

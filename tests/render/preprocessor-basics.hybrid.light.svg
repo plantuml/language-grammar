@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="209" height="272" viewBox="0 0 209 272">
+<rect x="0.5" y="0.5" width="208" height="271" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startuml</tspan></text>
+<text y="50"><tspan x="16.0" fill="#8250DF">!include</tspan><tspan x="83.2" fill="#1F2328"> common.puml</tspan></text>
+<text y="70"><tspan x="16.0" fill="#1F2328">!$name = </tspan><tspan x="91.6" fill="#0A3069">&quot;Alice&quot;</tspan></text>
+<text y="90"><tspan x="16.0" fill="#8250DF">!function</tspan><tspan x="91.6" fill="#1F2328"> $double($x)</tspan></text>
+<text y="110"><tspan x="32.8" fill="#8250DF">!return</tspan><tspan x="91.6" fill="#1F2328"> $x + $x</tspan></text>
+<text y="130"><tspan x="16.0" fill="#8250DF">!endfunction</tspan></text>
+<text y="150"><tspan x="16.0" fill="#6E7781">' a comment</tspan></text>
+<text y="170"><tspan x="16.0" fill="#6E7781">/' a block</tspan></text>
+<text y="190"><tspan x="16.0" fill="#6E7781">   comment '/</tspan></text>
+<text y="210"><tspan x="16.0" fill="#CF222E">participant</tspan><tspan x="116.8" fill="#953800">$name</tspan></text>
+<text y="230"><tspan x="16.0" fill="#1F2328">Alice </tspan><tspan x="66.4" fill="#CF222E">-&gt;</tspan><tspan x="83.2" fill="#1F2328"> Bob</tspan><tspan x="116.8" fill="#CF222E">:</tspan><tspan x="125.2" fill="#0A3069"> %date()</tspan></text>
+<text y="250"><tspan x="16.0" fill="#CF222E">@enduml</tspan></text>
+</g>
+</svg>

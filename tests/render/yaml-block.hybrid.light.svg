@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="125" height="152" viewBox="0 0 125 152">
+<rect x="0.5" y="0.5" width="124" height="151" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startyaml</tspan></text>
+<text y="50"><tspan x="16.0" fill="#116329">name</tspan><tspan x="49.6" fill="#1F2328">: </tspan><tspan x="66.4" fill="#0A3069">Alice</tspan></text>
+<text y="70"><tspan x="16.0" fill="#116329">list</tspan><tspan x="49.6" fill="#1F2328">:</tspan></text>
+<text y="90"><tspan x="16.0" fill="#1F2328">  - </tspan><tspan x="49.6" fill="#0A3069">one</tspan></text>
+<text y="110"><tspan x="16.0" fill="#1F2328">  - </tspan><tspan x="49.6" fill="#0550AE">2</tspan></text>
+<text y="130"><tspan x="16.0" fill="#CF222E">@endyaml</tspan></text>
+</g>
+</svg>

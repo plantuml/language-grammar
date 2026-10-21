@@ -4,8 +4,9 @@
   "type": "module",
   "description": "Renders and checks the PlantUML TextMate grammar the way GitHub highlights it",
   "scripts": {
-    "build": "node render.mjs",
-    "test": "node render.mjs --check",
+    "grammar": "node generate-grammar.mjs",
+    "build": "node generate-grammar.mjs && node render.mjs",
+    "test": "node generate-grammar.mjs --check && node render.mjs --check",
     "site": "node site.mjs",
     "coverage": "node coverage.mjs"
   },

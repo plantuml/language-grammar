@@ -1,0 +1,6 @@
+@startgantt
+Project starts 2020-07-01
+[Prototype] lasts 10 days
+[Test] starts at [Prototype]'s end and lasts 5 days
+[Test] is colored in Lavender/LightBlue
+@endgantt

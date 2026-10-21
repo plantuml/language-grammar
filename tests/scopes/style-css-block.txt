@@ -1,0 +1,29 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | <style>
+      "<"  diagram.source.wsd
+      "style"  diagram.source.wsd support.variable.source.wsd
+      ">"  diagram.source.wsd
+  3 | sequenceDiagram {
+      "sequenceDiagram"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      " {"  diagram.source.wsd
+  4 |   BackgroundColor #EEEEEE
+      "BackgroundColor"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      "#EEEEEE"  diagram.source.wsd string.quoted.double.skinparam.value.source.wsd
+  5 |   LineColor red
+      "LineColor"  diagram.source.wsd keyword.other.skinparam.keyword.source.wsd
+      "red"  diagram.source.wsd string.quoted.double.skinparam.value.source.wsd
+  6 | }
+      "}"  diagram.source.wsd
+  7 | </style>
+      "</"  diagram.source.wsd
+      "style"  diagram.source.wsd support.variable.source.wsd
+      ">"  diagram.source.wsd
+  8 | Alice -> Bob: styled
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+      "->"  diagram.source.wsd keyword.control.note.source.wsd
+      "Bob"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " styled"  diagram.source.wsd meta.comment.message.link.source.wsd
+  9 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd

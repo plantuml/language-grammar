@@ -1,0 +1,1 @@
+Class diagram: `skinparam` on one line and as a block (only the known parameter names are colored), `hide empty members`, a stereotype, and relations with labels.

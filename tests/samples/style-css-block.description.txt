@@ -1,0 +1,1 @@
+A `<style>` block contains CSS: the hybrid grammar hands it over to the CSS grammar.

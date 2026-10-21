@@ -11,40 +11,18 @@
 // Usage:
 //   node coverage.mjs               print the report
 //   node coverage.mjs --markdown    print the report as Markdown (GitHub job summary)
+//   node coverage.mjs --grammar=hybrid   measure the hybrid grammar (default: upstream)
 
-import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { root, THEMES, LANG, createGrammarHighlighter } from './common.mjs';
+import { THEMES, LANG, createGrammarHighlighter, GRAMMAR_KINDS } from './common.mjs';
+import { parseKeywordList } from './keywords.mjs';
+import { SCOPES } from './generate-grammar.mjs';
 
-export const keywordFile = path.join(root, 'data', 'list-keywords.txt');
+export { parseKeywordList };
 
 // A word that is not a PlantUML word, used to detect the generic rules.
 const CONTROL_WORD = 'zzqqxx';
-
-// Reads the sections of the file: { type: { name, declared, words }, keyword: ..., ... }
-export function parseKeywordList(file = keywordFile) {
-  const lines = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n').split('\n');
-  const sections = {};
-  let current = null;
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (line === ';EOF') break;
-    if (line.startsWith(';') && /^;\d+$/.test(lines[i + 1] ?? '')) {
-      current = { name: line.slice(1), declared: Number(lines[i + 1].slice(1)), words: [] };
-      sections[current.name] = current;
-      i++;
-    } else if (current && line.trim() !== '') {
-      current.words.push(line.trim());
-    }
-  }
-  for (const s of Object.values(sections)) {
-    if (s.declared !== s.words.length) {
-      throw new Error(`Section "${s.name}" of the keyword file declares ${s.declared} words but has ${s.words.length}`);
-    }
-  }
-  return sections;
-}
 
 // The scopes of every piece of highlighted text that contains one of `texts` as whole words.
 // The grammar sometimes gives one scope to several words ("note left"), so a piece is accepted
@@ -67,6 +45,9 @@ function scopesOf(highlighter, code, texts) {
   return found;
 }
 
+// The scope names of the upstream grammar and of the hybrid one are different: both are accepted.
+const hasScope = (scopes, ...names) => names.some((n) => scopes.includes(n));
+
 const inDiagram = (line) => `@startuml\n${line}\n@enduml`;
 
 // How each category is checked: the probes put a word in the places where it is expected, and
@@ -79,7 +60,7 @@ const CATEGORIES = [
     note: 'element declarations at the start of a line',
     words: (s) => s.type.words,
     probes: (w) => [inDiagram(`${w} X`)],
-    isRecognized: (scopes) => scopes.includes('keyword.other.linebegin.source.wsd'),
+    isRecognized: (scopes) => hasScope(scopes, 'keyword.other.linebegin.source.wsd', SCOPES.type),
   },
   {
     id: 'blocks',
@@ -89,7 +70,7 @@ const CATEGORIES = [
     words: (s) => s.keyword.words.filter((w) => w.startsWith('@')),
     probes: (w) => [w.startsWith('@start') ? `${w}\n@enduml` : `@startuml\n${w}`],
     control: (w) => (w.startsWith('@start') ? `@start${CONTROL_WORD}` : `@end${CONTROL_WORD}`),
-    isRecognized: (scopes) => scopes.includes('keyword.control.diagram.source.wsd'),
+    isRecognized: (scopes) => hasScope(scopes, 'keyword.control.diagram.source.wsd', SCOPES.diagram),
   },
   {
     id: 'keywords',
@@ -123,7 +104,7 @@ const CATEGORIES = [
     words: (s) => s.preprocessor.words,
     probes: (w) => [inDiagram(`${w} X`)],
     control: () => `!${CONTROL_WORD}`,
-    isRecognized: (scopes) => scopes.includes('entity.name.function.preprocessings.source.wsd'),
+    isRecognized: (scopes) => hasScope(scopes, 'entity.name.function.preprocessings.source.wsd', SCOPES.preprocessor),
   },
   {
     id: 'skinparameter',
@@ -132,7 +113,7 @@ const CATEGORIES = [
     note: 'names after skinparam',
     words: (s) => s.skinparameter.words,
     probes: (w) => [inDiagram(`skinparam ${w} red`)],
-    isRecognized: (scopes) => scopes.includes('keyword.other.skinparam.keyword.source.wsd'),
+    isRecognized: (scopes) => hasScope(scopes, 'keyword.other.skinparam.keyword.source.wsd', SCOPES.skinparam),
   },
   {
     id: 'color',
@@ -142,7 +123,7 @@ const CATEGORIES = [
     words: (s) => s.color.words,
     probes: (w) => [inDiagram(`rectangle X #${w}`)],
     textsOf: (w) => [`#${w}`],
-    isRecognized: (scopes) => scopes.includes('constant.numeric.colors.source.wsd'),
+    isRecognized: (scopes) => hasScope(scopes, 'constant.numeric.colors.source.wsd', SCOPES.color),
   },
 ];
 
@@ -210,7 +191,10 @@ export { GENERIC_NOTE };
 
 // Command line
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const highlighter = await createGrammarHighlighter();
+  const kindArg = process.argv.find((a) => a.startsWith('--grammar='));
+  const kind = kindArg ? kindArg.slice('--grammar='.length) : 'upstream';
+  if (!GRAMMAR_KINDS.includes(kind)) throw new Error(`Unknown grammar "${kind}" (${GRAMMAR_KINDS.join(', ')})`);
+  const highlighter = await createGrammarHighlighter(kind);
   const results = computeCoverage(highlighter);
   process.stdout.write(process.argv.includes('--markdown') ? toMarkdown(results) : toText(results));
 }

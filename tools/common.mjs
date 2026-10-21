@@ -12,6 +12,7 @@ export const scopesDir = path.join(testsDir, 'scopes');
 export const renderDir = path.join(testsDir, 'render');
 
 const grammarFile = path.join(root, 'syntaxes', 'plantuml.yaml-tmLanguage');
+const hybridFile = path.join(root, 'syntaxes', 'plantuml-hybrid.tmLanguage.json');
 const injectionFile = path.join(root, 'syntaxes', 'codeblock.json');
 
 export const THEMES = { light: 'github-light-default', dark: 'github-dark-default' };
@@ -25,8 +26,14 @@ const SAMPLE_EXTENSIONS = ['.puml', '.iuml', '.plantuml', '.md'];
 export const escapeXml = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function loadGrammars() {
-  const grammar = loadYaml(fs.readFileSync(grammarFile, 'utf8'));
+// The grammars that can be tested: the one of Linguist today ("upstream") and the prototype ("hybrid").
+export const GRAMMAR_KINDS = ['upstream', 'hybrid'];
+
+function loadGrammars(kind) {
+  const grammar =
+    kind === 'hybrid'
+      ? JSON.parse(fs.readFileSync(hybridFile, 'utf8'))
+      : loadYaml(fs.readFileSync(grammarFile, 'utf8'));
   // The injection grammar makes ```plantuml fenced blocks of Markdown files use the PlantUML grammar.
   const injection = JSON.parse(fs.readFileSync(injectionFile, 'utf8'));
   return [
@@ -36,10 +43,13 @@ function loadGrammars() {
 }
 
 // A Shiki highlighter loaded with the GitHub themes and the grammars of this repository.
-export function createGrammarHighlighter() {
+// The hybrid grammar includes other languages (JSON, YAML, CSS, LaTeX), which GitHub also has.
+export function createGrammarHighlighter(kind = 'upstream') {
+  if (!GRAMMAR_KINDS.includes(kind)) throw new Error(`Unknown grammar "${kind}"`);
+  const embedded = kind === 'hybrid' ? ['json', 'yaml', 'css', 'latex'] : [];
   return createHighlighter({
     themes: Object.values(THEMES),
-    langs: ['markdown', ...loadGrammars()],
+    langs: ['markdown', ...embedded, ...loadGrammars(kind)],
   });
 }
 

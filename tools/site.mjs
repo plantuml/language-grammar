@@ -22,7 +22,11 @@ import {
 } from './common.mjs';
 import { computeCoverage, GENERIC_NOTE } from './coverage.mjs';
 
-const outDir = path.join(root, 'site');
+// The site is built twice: the current grammar (site/) and the hybrid prototype (site/hybrid/).
+// Both have the same tree, so a page links to its counterpart.
+const siteDir = path.join(root, 'site');
+let outDir = siteDir;
+let grammarKind = 'upstream';
 const REPO_URL = 'https://github.com/plantuml/language-grammar';
 
 // The folders of tests/ that are shown, in this order.
@@ -142,6 +146,15 @@ const themeSwitch = `
       <button type="button" data-mode="dark" aria-pressed="false">Dark</button>
     </div>`;
 
+// "Grammar: current | hybrid prototype", with a link to the same page in the other version.
+function grammarSwitch(segments) {
+  const prefix = '../'.repeat(segments.length);
+  const same = segments.map(hrefOf).join('/') + (segments.length > 0 ? '/' : '');
+  return grammarKind === 'upstream'
+    ? `<p class="grammar-switch">Grammar: <strong>current</strong> (the one of GitHub Linguist today) | <a href="${prefix}hybrid/${same}index.html">hybrid prototype</a></p>`
+    : `<p class="grammar-switch">Grammar: <a href="${prefix}../${same}index.html">current</a> (the one of GitHub Linguist today) | <strong>hybrid prototype</strong></p>`;
+}
+
 function writePage(segments, { title, header, body }) {
   const prefix = '../'.repeat(segments.length);
   const version = commit
@@ -160,6 +173,7 @@ function writePage(segments, { title, header, body }) {
 <main>
   <header>
 ${header}
+    ${grammarSwitch(segments)}
 ${themeSwitch}
   </header>
 ${body}
@@ -265,7 +279,13 @@ function renderHome(sections, coverage) {
     title: 'PlantUML language grammar: highlighting gallery',
     header: `    <h1>PlantUML language grammar</h1>
     <p>Highlighting gallery: PlantUML samples highlighted with the TextMate grammar of <a href="${REPO_URL}">plantuml/language-grammar</a>.</p>
-    <p>The tree of this site is the one of the <code>tests/</code> folder of the repository.</p>`,
+    <p>The tree of this site is the one of the <code>tests/</code> folder of the repository.</p>${
+      grammarKind === 'hybrid'
+        ? '\n    <p><strong>Hybrid prototype</strong>: a grammar generated from <code>data/list-keywords.txt</code> that chooses its rules from the <code>@startXXX</code> line. See <a href="' +
+          REPO_URL +
+          '/blob/main/tools/generate-grammar.mjs">tools/generate-grammar.mjs</a>.</p>'
+        : ''
+    }`,
     body: cards + renderCoverage(coverage),
   });
 }
@@ -275,6 +295,7 @@ function renderHome(sections, coverage) {
 // ---------------------------------------------------------------------------------------------
 
 const CSS = `
+.grammar-switch { margin: 8px 0; color: var(--muted); }
 .coverage { width: 100%; border-collapse: collapse; font-size: 14px; }
 .coverage th, .coverage td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--border); vertical-align: top; }
 .coverage .num { white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -380,8 +401,10 @@ function writeAssets() {
 
 // ---------------------------------------------------------------------------------------------
 
-async function main() {
-  const highlighter = await createGrammarHighlighter();
+async function buildSite(kind, dir) {
+  grammarKind = kind;
+  outDir = dir;
+  const highlighter = await createGrammarHighlighter(kind);
 
   const sections = SECTIONS.map((section) => ({
     section,
@@ -403,7 +426,13 @@ async function main() {
 
   const pages = fs.readdirSync(outDir, { recursive: true }).filter((f) => f.endsWith('index.html')).length;
   const total = sections.reduce((n, { tree }) => n + tree.fileCount, 0);
-  console.log(`wrote site/ (${plural(pages, 'page')}, ${plural(total, 'sample')})`);
+  console.log(`wrote ${path.relative(root, outDir) || '.'}/ (${kind}: ${plural(pages, 'page')}, ${plural(total, 'sample')})`);
+}
+
+async function main() {
+  // The current grammar first: it empties site/, the prototype goes in site/hybrid/.
+  await buildSite('upstream', siteDir);
+  await buildSite('hybrid', path.join(siteDir, 'hybrid'));
 }
 
 main().catch((err) => {

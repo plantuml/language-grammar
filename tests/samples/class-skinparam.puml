@@ -1,0 +1,16 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #FEFECE
+  BorderColor black
+}
+hide empty members
+
+abstract class Animal <<entity>> {
+  - name : String
+  + eat()
+}
+class Dog
+Animal <|-- Dog : extends
+Dog "1" *-- "many" Leg
+@enduml

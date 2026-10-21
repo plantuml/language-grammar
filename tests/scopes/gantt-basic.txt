@@ -1,0 +1,44 @@
+  1 | @startgantt
+      "@startgantt"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | Project starts 2020-07-01
+      "Project"  diagram.source.wsd support.variable.source.wsd
+      "starts"  diagram.source.wsd support.variable.source.wsd
+      "2020"  diagram.source.wsd support.variable.source.wsd
+      "-0"  diagram.source.wsd keyword.control.note.source.wsd
+      "7"  diagram.source.wsd
+      "-0"  diagram.source.wsd keyword.control.note.source.wsd
+      "1"  diagram.source.wsd
+  3 | [Prototype] lasts 10 days
+      "["  diagram.source.wsd
+      "Prototype"  diagram.source.wsd support.variable.source.wsd
+      "] "  diagram.source.wsd
+      "lasts"  diagram.source.wsd support.variable.source.wsd
+      "10"  diagram.source.wsd support.variable.source.wsd
+      "days"  diagram.source.wsd support.variable.source.wsd
+  4 | [Test] starts at [Prototype]'s end and lasts 5 days
+      "["  diagram.source.wsd
+      "Test"  diagram.source.wsd support.variable.source.wsd
+      "] "  diagram.source.wsd
+      "starts"  diagram.source.wsd support.variable.source.wsd
+      "at"  diagram.source.wsd support.variable.source.wsd
+      " ["  diagram.source.wsd
+      "Prototype"  diagram.source.wsd support.variable.source.wsd
+      "]'"  diagram.source.wsd
+      "s"  diagram.source.wsd support.variable.source.wsd
+      "end"  diagram.source.wsd support.variable.source.wsd
+      "and"  diagram.source.wsd support.variable.source.wsd
+      "lasts"  diagram.source.wsd support.variable.source.wsd
+      "5"  diagram.source.wsd support.variable.source.wsd
+      "days"  diagram.source.wsd support.variable.source.wsd
+  5 | [Test] is colored in Lavender/LightBlue
+      "["  diagram.source.wsd
+      "Test"  diagram.source.wsd support.variable.source.wsd
+      "] "  diagram.source.wsd
+      "is"  diagram.source.wsd support.variable.source.wsd
+      "colored"  diagram.source.wsd support.variable.source.wsd
+      "in"  diagram.source.wsd support.variable.source.wsd
+      "Lavender"  diagram.source.wsd support.variable.source.wsd
+      "/"  diagram.source.wsd
+      "LightBlue"  diagram.source.wsd support.variable.source.wsd
+  6 | @endgantt
+      "@endgantt"  diagram.source.wsd keyword.control.diagram.source.wsd

@@ -1,0 +1,55 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | start
+      "start"  diagram.source.wsd keyword.other.wholeline.source.wsd
+  3 | :read the data;
+      ":"  diagram.source.wsd support.variable.definitions.source.wsd
+      "read the data"  diagram.source.wsd support.variable.definitions.source.wsd
+      ";"  diagram.source.wsd support.variable.definitions.source.wsd
+  4 | if (valid?) then (yes)
+      "if"  diagram.source.wsd keyword.other.activity.if.source.wsd
+      " ("  diagram.source.wsd
+      "valid?"  diagram.source.wsd string.quoted.double.activity.if.source.wsd
+      ") "  diagram.source.wsd
+      "then"  diagram.source.wsd keyword.other.activity.if.source.wsd
+      " ("  diagram.source.wsd
+      "yes"  diagram.source.wsd meta.comment.activity.if.source.wsd
+      ")"  diagram.source.wsd
+  5 |   :process;
+      "  :"  diagram.source.wsd support.variable.definitions.source.wsd
+      "process"  diagram.source.wsd support.variable.definitions.source.wsd
+      ";"  diagram.source.wsd support.variable.definitions.source.wsd
+  6 | else (no)
+      "else"  diagram.source.wsd keyword.other.activity.else.source.wsd
+      " ("  diagram.source.wsd
+      "no"  diagram.source.wsd meta.comment.activity.else.source.wsd
+      ")"  diagram.source.wsd
+  7 |   :report an error;
+      "  :"  diagram.source.wsd support.variable.definitions.source.wsd
+      "report an error"  diagram.source.wsd support.variable.definitions.source.wsd
+      ";"  diagram.source.wsd support.variable.definitions.source.wsd
+  8 | endif
+      "endif"  diagram.source.wsd keyword.other.wholeline.source.wsd
+  9 | while (more data?) is (yes)
+      "while"  diagram.source.wsd keyword.other.activity.while.source.wsd
+      " ("  diagram.source.wsd
+      "more data?"  diagram.source.wsd string.quoted.double.activity.while.source.wsd
+      ") "  diagram.source.wsd
+      "is"  diagram.source.wsd keyword.other.activity.while.source.wsd
+      " ("  diagram.source.wsd
+      "yes"  diagram.source.wsd meta.comment.activity.while.source.wsd
+      ")"  diagram.source.wsd
+ 10 |   :next;
+      "  :"  diagram.source.wsd support.variable.definitions.source.wsd
+      "next"  diagram.source.wsd support.variable.definitions.source.wsd
+      ";"  diagram.source.wsd support.variable.definitions.source.wsd
+ 11 | endwhile (no)
+      "end"  diagram.source.wsd keyword.other.activity.endwhile.source.wsd
+      "while"  diagram.source.wsd keyword.other.activity.endwhile.source.wsd
+      " ("  diagram.source.wsd
+      "no"  diagram.source.wsd meta.comment.activity.endwhile.source.wsd
+      ")"  diagram.source.wsd
+ 12 | stop
+      "stop"  diagram.source.wsd keyword.other.wholeline.source.wsd
+ 13 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd

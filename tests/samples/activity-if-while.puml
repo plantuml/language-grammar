@@ -1,0 +1,13 @@
+@startuml
+start
+:read the data;
+if (valid?) then (yes)
+  :process;
+else (no)
+  :report an error;
+endif
+while (more data?) is (yes)
+  :next;
+endwhile (no)
+stop
+@enduml

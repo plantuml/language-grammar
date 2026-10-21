@@ -1,0 +1,42 @@
+  1 | @startuml
+      "@startuml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
+  2 | !include common.puml
+      "!include"  meta.diagram.uml.wsd entity.name.function.preprocessor.wsd
+      " common.puml"  meta.diagram.uml.wsd
+  3 | !$name = "Alice"
+      "!"  meta.diagram.uml.wsd
+      "$name"  meta.diagram.uml.wsd variable.other.wsd
+      " = "  meta.diagram.uml.wsd
+      "\"Alice\""  meta.diagram.uml.wsd string.quoted.double.wsd
+  4 | !function $double($x)
+      "!function"  meta.diagram.uml.wsd entity.name.function.preprocessor.wsd
+      "$double"  meta.diagram.uml.wsd variable.other.wsd
+      "("  meta.diagram.uml.wsd
+      "$x"  meta.diagram.uml.wsd variable.other.wsd
+      ")"  meta.diagram.uml.wsd
+  5 |   !return $x + $x
+      "!return"  meta.diagram.uml.wsd entity.name.function.preprocessor.wsd
+      "$x"  meta.diagram.uml.wsd variable.other.wsd
+      " + "  meta.diagram.uml.wsd
+      "$x"  meta.diagram.uml.wsd variable.other.wsd
+  6 | !endfunction
+      "!endfunction"  meta.diagram.uml.wsd entity.name.function.preprocessor.wsd
+  7 | ' a comment
+      "' a comment"  meta.diagram.uml.wsd comment.line.wsd
+  8 | /' a block
+      "/'"  meta.diagram.uml.wsd comment.block.wsd
+      " a block"  meta.diagram.uml.wsd comment.block.wsd
+  9 |    comment '/
+      "   comment "  meta.diagram.uml.wsd comment.block.wsd
+      "'/"  meta.diagram.uml.wsd comment.block.wsd
+ 10 | participant $name
+      "participant"  meta.diagram.uml.wsd storage.type.element.wsd
+      "$name"  meta.diagram.uml.wsd entity.name.type.wsd
+ 11 | Alice -> Bob: %date()
+      "Alice "  meta.diagram.uml.wsd
+      "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " Bob"  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " %date()"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 12 | @enduml
+      "@enduml"  meta.diagram.uml.wsd keyword.control.diagram.wsd

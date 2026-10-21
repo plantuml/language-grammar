@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="318" height="352" viewBox="0 0 318 352">
+<rect x="0.5" y="0.5" width="317" height="351" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startuml</tspan></text>
+<text y="50"><tspan x="16.0" fill="#CF222E">skinparam</tspan><tspan x="100.0" fill="#953800">classAttributeIconSize</tspan><tspan x="293.2" fill="#0550AE">0</tspan></text>
+<text y="70"><tspan x="16.0" fill="#CF222E">skinparam</tspan><tspan x="100.0" fill="#953800">class</tspan><tspan x="150.4" fill="#CF222E">{</tspan></text>
+<text y="90"><tspan x="32.8" fill="#953800">BackgroundColor</tspan><tspan x="167.2" fill="#0550AE">#FEFECE</tspan></text>
+<text y="110"><tspan x="16.0" fill="#1F2328">  BorderColor black</tspan></text>
+<text y="130"><tspan x="16.0" fill="#CF222E">}</tspan></text>
+<text y="150"><tspan x="16.0" fill="#CF222E">hide</tspan><tspan x="58.0" fill="#CF222E">empty</tspan><tspan x="108.4" fill="#CF222E">members</tspan></text>
+<text y="170"></text>
+<text y="190"><tspan x="16.0" fill="#CF222E">abstract</tspan><tspan x="91.6" fill="#CF222E">class</tspan><tspan x="142.0" fill="#953800">Animal</tspan><tspan x="200.8" fill="#116329">&lt;&lt;entity&gt;&gt;</tspan><tspan x="284.8" fill="#1F2328"> {</tspan></text>
+<text y="210"><tspan x="16.0" fill="#1F2328">  - name : String</tspan></text>
+<text y="230"><tspan x="16.0" fill="#1F2328">  + eat()</tspan></text>
+<text y="250"><tspan x="16.0" fill="#1F2328">}</tspan></text>
+<text y="270"><tspan x="16.0" fill="#CF222E">class</tspan><tspan x="66.4" fill="#953800">Dog</tspan></text>
+<text y="290"><tspan x="16.0" fill="#1F2328">Animal </tspan><tspan x="74.8" fill="#CF222E">&lt;|--</tspan><tspan x="108.4" fill="#1F2328"> Dog </tspan><tspan x="150.4" fill="#CF222E">:</tspan><tspan x="158.8" fill="#0A3069"> extends</tspan></text>
+<text y="310"><tspan x="16.0" fill="#1F2328">Dog </tspan><tspan x="49.6" fill="#0A3069">&quot;1&quot;</tspan><tspan x="83.2" fill="#CF222E">*--</tspan><tspan x="116.8" fill="#0A3069">&quot;many&quot;</tspan><tspan x="167.2" fill="#1F2328"> Leg</tspan></text>
+<text y="330"><tspan x="16.0" fill="#CF222E">@enduml</tspan></text>
+</g>
+</svg>

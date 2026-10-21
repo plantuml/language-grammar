@@ -34,7 +34,8 @@ The grammar in `syntaxes/` is, for now, an unmodified copy of the one used by Gi
 - a first sample, a sequence diagram "Hello World";
 - a snapshot of the TextMate scopes of every token;
 - a rendering of every sample in the GitHub light and dark themes;
-- a public gallery, rebuilt on every push.
+- a public gallery, rebuilt on every push;
+- a **hybrid grammar prototype** (see below), tested and shown next to the current one.
 
 ## Technical choices
 
@@ -59,7 +60,7 @@ Rouge, a Ruby highlighter, was considered and dropped: its lexers are written in
 
 For each sample in `tests/samples/`:
 
-1. **Scope snapshot** (`tests/scopes/`): the TextMate scopes given to every token. A change in the grammar that modifies the scopes of any sample is detected.
+1. **Scope snapshot** (`tests/scopes/`): the TextMate scopes given to every token. A change in the grammar that modifies the scopes of any sample is detected. This is done for both grammars.
 2. **SVG rendering** (`tests/render/`): the highlighted code in the GitHub light and dark themes, displayed directly by GitHub in this repository.
 3. **Gallery** (GitHub Pages): all the samples on one page, with a theme switch and the scopes shown when hovering a token.
 
@@ -70,6 +71,21 @@ A GitHub Action fails if the committed files differ from what the grammar produc
 A TextMate grammar describes one language. To color a PlantUML block inside a Markdown file, the Markdown grammar must be told to use it. An *injection grammar* does this: it plugs another grammar into a given zone of a host grammar. `syntaxes/codeblock.json` (scope `markdown.plantuml.codeblock`) says "inside a code block whose language is `plantuml`, apply the PlantUML grammar".
 
 It is kept because the current Linguist entry lists both scopes, and it is tested with a Markdown sample. Whether GitHub itself uses it, or resolves the `plantuml` fence directly to the language through Linguist, is not known.
+
+### The hybrid grammar (prototype)
+
+`syntaxes/plantuml-hybrid.tmLanguage.json` is a second grammar, **generated** by `tools/generate-grammar.mjs`. It does not replace the current one yet: both are tested on the same samples and shown side by side in the gallery (the *Grammar* link at the top of each page switches from one to the other).
+
+- **The words come from PlantUML itself.** The types, keywords, directives, skin parameters and colors are read from `data/list-keywords.txt`, so a new word of PlantUML only needs a new export of that file. Only the known skin parameter names are colored, not any word.
+- **The grammar starts with the `@startXXX` line**, because the language that follows depends on it. `@startjson` and `@startyaml` are handed to the JSON and YAML grammars, `@startmindmap`/`@startwbs`, `@startgantt`, `@startsalt` and `@startnwdiag`/`@startpacketdiag` have their own rules, and `@startuml` (and any other `@startxxx`) gets the general rules. A `<style>` block is handed to the CSS grammar.
+- **One scope per type of word**, so that a theme can give them different colors: `storage.type.element.wsd` for `class`/`actor`/`participant`, `keyword.control.wsd` for `alt`/`note`/`skinparam`, `entity.name.function.preprocessor.wsd` for `!include`, `variable.parameter.skinparam.wsd` for skin parameters, `constant.other.color.wsd` for colors, and so on. The GitHub themes only have a handful of colors, so some types share one: types and keywords are both red, for example.
+- **The text of messages, notes, titles and legends is not code**: it is not colored as keywords. A block that is never closed stops at the end of the diagram.
+
+Limits of the prototype:
+
+- `data/list-keywords.txt` is a flat list: it does not say which words belong to which diagram. The words that are only valid inside a statement (such as `left` in `note left of A`) are listed by hand in the generator (`INLINE_ONLY`), and the rules of each family (mind map, Gantt, salt, ...) are written by hand. A list of the words of each diagram would need to come from PlantUML itself.
+- `@startuml` contains many kinds of diagrams (sequence, class, activity, state, ...) that PlantUML recognizes from the content: the general rules are a union of them.
+- `@startdot` and `@startditaa` are not colored yet (the DOT grammar is not available in the test tool).
 
 ### `puml.ebnf` is an experiment
 
@@ -84,11 +100,11 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 
 | Path | Content |
 | --- | --- |
-| `syntaxes/` | The TextMate grammar (`source.wsd`) and the Markdown injection grammar (`codeblock.json`), taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT). |
+| `syntaxes/` | The TextMate grammar (`source.wsd`) and the Markdown injection grammar (`codeblock.json`), taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT), and the generated hybrid prototype (`plantuml-hybrid.tmLanguage.json`). |
 | `tests/samples/` | Hand-picked PlantUML samples used to test the grammar, with an optional `<name>.description.txt` explaining what each one tests. Each one has a scope snapshot and SVG renders. |
 | `tests/vega/` | The Vega corpus: the non-regression tests of PlantUML, copied from the PlantUML repository (514 `.puml` files in folders). Shown in the gallery, without snapshots for now. The YAML header that most files have before `@startuml` is a test setting, not PlantUML code: it is ignored. |
-| `tests/scopes/` | For each sample, the TextMate scopes of every token (snapshots). |
-| `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes. |
+| `tests/scopes/` | For each sample, the TextMate scopes of every token (snapshots). `<name>.txt` for the current grammar, `<name>.hybrid.txt` for the prototype. |
+| `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes (`<name>.hybrid.*.svg` for the prototype). |
 | `data/` | Reference data from PlantUML itself: `list-keywords.txt`, the output of `plantuml.jar --list-keywords` (see `data/README.md`). |
 | `tools/` | Node.js scripts that generate and check the files above and build the gallery. |
 | `.github/workflows/` | `test.yml` (checks) and `pages.yml` (gallery). |
@@ -153,21 +169,23 @@ Requires Node.js 22 or later.
 ```
 cd tools
 npm ci
-npm run build   # regenerate tests/scopes and tests/render
+npm run build   # regenerate the hybrid grammar, tests/scopes and tests/render
 npm test        # fail if the generated files are out of date
 npm run site    # build the gallery in site/ (open site/index.html)
 npm run coverage  # how many words of data/list-keywords.txt the grammar recognizes
+npm run coverage -- --grammar=hybrid   # the same for the hybrid prototype
+npm run grammar   # regenerate only the hybrid grammar
 ```
 
 To add a test:
 
 1. Put a `.puml` (or `.iuml`, `.plantuml`, `.md`) file in `tests/samples/`, and optionally a `<name>.description.txt` next to it.
-2. Run `npm run build` and review the generated scopes and SVG files.
+2. Run `npm run build` and review the generated scopes and SVG files (for both grammars).
 3. Commit them together with the sample.
 
 ## Continuous integration
 
-- **Test** runs on every push and pull request. It fails if `tests/scopes` or `tests/render` are out of date, and uploads the regenerated files as an artifact to help fixing it.
+- **Test** runs on every push and pull request. It fails if the hybrid grammar, `tests/scopes` or `tests/render` are out of date, and uploads the regenerated files as an artifact to help fixing it.
 - The Test job summary also shows the **keyword coverage** of the grammar (information only, it never fails the build); the gallery home page shows it too.
 - **Pages** runs on every push to `main`. It runs the same check, builds the gallery and publishes it with GitHub Pages. It requires *Settings > Pages > Build and deployment > Source* to be set to *GitHub Actions*.
 

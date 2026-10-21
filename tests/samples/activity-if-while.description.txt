@@ -1,0 +1,1 @@
+Activity diagram: `:action;`, `if / then / else / endif` and `while / endwhile`.

@@ -1,0 +1,1 @@
+`@startgantt`: tasks between brackets, dates, durations and the words of the Gantt language.

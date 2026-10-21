@@ -1,0 +1,1 @@
+`@startjson` contains JSON, not PlantUML: the hybrid grammar hands it over to the JSON grammar.

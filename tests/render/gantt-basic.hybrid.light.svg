@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="461" height="152" viewBox="0 0 461 152">
+<rect x="0.5" y="0.5" width="460" height="151" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startgantt</tspan></text>
+<text y="50"><tspan x="16.0" fill="#CF222E">Project starts</tspan><tspan x="142.0" fill="#0550AE">2020-07-01</tspan></text>
+<text y="70"><tspan x="16.0" fill="#8250DF">[Prototype]</tspan><tspan x="116.8" fill="#CF222E">lasts</tspan><tspan x="167.2" fill="#0550AE">10</tspan><tspan x="192.4" fill="#CF222E">days</tspan></text>
+<text y="90"><tspan x="16.0" fill="#8250DF">[Test]</tspan><tspan x="74.8" fill="#CF222E">starts</tspan><tspan x="133.6" fill="#CF222E">at</tspan><tspan x="158.8" fill="#8250DF">[Prototype]</tspan><tspan x="251.2" fill="#1F2328">'s end </tspan><tspan x="310.0" fill="#CF222E">and</tspan><tspan x="343.6" fill="#CF222E">lasts</tspan><tspan x="394.0" fill="#0550AE">5</tspan><tspan x="410.8" fill="#CF222E">days</tspan></text>
+<text y="110"><tspan x="16.0" fill="#8250DF">[Test]</tspan><tspan x="74.8" fill="#CF222E">is colored in</tspan><tspan x="184.0" fill="#1F2328"> Lavender/LightBlue</tspan></text>
+<text y="130"><tspan x="16.0" fill="#CF222E">@endgantt</tspan></text>
+</g>
+</svg>

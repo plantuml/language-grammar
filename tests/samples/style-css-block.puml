@@ -1,0 +1,9 @@
+@startuml
+<style>
+sequenceDiagram {
+  BackgroundColor #EEEEEE
+  LineColor red
+}
+</style>
+Alice -> Bob: styled
+@enduml

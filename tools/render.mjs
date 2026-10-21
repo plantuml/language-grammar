@@ -1,7 +1,8 @@
-// Renders every sample in tests/samples with the PlantUML TextMate grammar.
+// Renders every sample in tests/samples with the PlantUML TextMate grammars (upstream and hybrid).
 //
 // For each sample it produces:
 //   - tests/scopes/<name>.txt           the TextMate scopes of every token (regression snapshot)
+//   (the same files with .hybrid before the extension for the hybrid grammar)
 //   - tests/render/<name>.light.svg     the highlighted code, GitHub light theme
 //   - tests/render/<name>.dark.svg      the highlighted code, GitHub dark theme
 //
@@ -20,6 +21,7 @@ import {
   escapeXml,
   createGrammarHighlighter,
   listSamples,
+  GRAMMAR_KINDS,
 } from './common.mjs';
 
 const BORDER = { light: '#d1d9e0', dark: '#3d444d' };
@@ -92,21 +94,25 @@ function toScopes(code, tokenResult) {
 async function main() {
   const check = process.argv.includes('--check');
 
-  const highlighter = await createGrammarHighlighter();
   const samples = listSamples();
 
+  // Two grammars are tested: the one used by Linguist today (files <name>.*) and the hybrid
+  // prototype (files <name>.hybrid.*).
   const expected = new Map();
-  for (const { name, lang, body } of samples) {
-
-    for (const [kind, theme] of Object.entries(THEMES)) {
-      const tokenResult = highlighter.codeToTokens(body, {
-        lang,
-        theme,
-        includeExplanation: true,
-      });
-      expected.set(path.join(renderDir, `${name}.${kind}.svg`), toSvg(tokenResult, kind));
-      if (kind === 'light') {
-        expected.set(path.join(scopesDir, `${name}.txt`), toScopes(body, tokenResult));
+  for (const grammarKind of GRAMMAR_KINDS) {
+    const highlighter = await createGrammarHighlighter(grammarKind);
+    const infix = grammarKind === 'upstream' ? '' : `.${grammarKind}`;
+    for (const { name, lang, body } of samples) {
+      for (const [kind, theme] of Object.entries(THEMES)) {
+        const tokenResult = highlighter.codeToTokens(body, {
+          lang,
+          theme,
+          includeExplanation: true,
+        });
+        expected.set(path.join(renderDir, `${name}${infix}.${kind}.svg`), toSvg(tokenResult, kind));
+        if (kind === 'light') {
+          expected.set(path.join(scopesDir, `${name}${infix}.txt`), toScopes(body, tokenResult));
+        }
       }
     }
   }

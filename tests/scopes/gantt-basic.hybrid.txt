@@ -1,0 +1,26 @@
+  1 | @startgantt
+      "@startgantt"  meta.diagram.gantt.wsd keyword.control.diagram.wsd
+  2 | Project starts 2020-07-01
+      "Project starts"  meta.diagram.gantt.wsd keyword.control.wsd
+      "2020-07-01"  meta.diagram.gantt.wsd constant.numeric.wsd
+  3 | [Prototype] lasts 10 days
+      "[Prototype]"  meta.diagram.gantt.wsd entity.name.function.task.wsd
+      "lasts"  meta.diagram.gantt.wsd keyword.control.wsd
+      "10"  meta.diagram.gantt.wsd constant.numeric.wsd
+      "days"  meta.diagram.gantt.wsd keyword.control.wsd
+  4 | [Test] starts at [Prototype]'s end and lasts 5 days
+      "[Test]"  meta.diagram.gantt.wsd entity.name.function.task.wsd
+      "starts"  meta.diagram.gantt.wsd keyword.control.wsd
+      "at"  meta.diagram.gantt.wsd keyword.control.wsd
+      "[Prototype]"  meta.diagram.gantt.wsd entity.name.function.task.wsd
+      "'s end "  meta.diagram.gantt.wsd
+      "and"  meta.diagram.gantt.wsd keyword.control.wsd
+      "lasts"  meta.diagram.gantt.wsd keyword.control.wsd
+      "5"  meta.diagram.gantt.wsd constant.numeric.wsd
+      "days"  meta.diagram.gantt.wsd keyword.control.wsd
+  5 | [Test] is colored in Lavender/LightBlue
+      "[Test]"  meta.diagram.gantt.wsd entity.name.function.task.wsd
+      "is colored in"  meta.diagram.gantt.wsd keyword.control.wsd
+      " Lavender/LightBlue"  meta.diagram.gantt.wsd
+  6 | @endgantt
+      "@endgantt"  meta.diagram.gantt.wsd keyword.control.diagram.wsd

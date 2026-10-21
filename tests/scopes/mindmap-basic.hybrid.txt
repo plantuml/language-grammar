@@ -1,0 +1,23 @@
+  1 | @startmindmap
+      "@startmindmap"  meta.diagram.tree.wsd keyword.control.diagram.wsd
+  2 | title My mind map
+      "title"  meta.diagram.tree.wsd keyword.control.wsd
+      "My mind map"  meta.diagram.tree.wsd entity.name.section.title.wsd
+  3 | * Root
+      "*"  meta.diagram.tree.wsd markup.heading.level.wsd
+      " Root"  meta.diagram.tree.wsd
+  4 | ** Child one
+      "**"  meta.diagram.tree.wsd markup.heading.level.wsd
+      " Child one"  meta.diagram.tree.wsd
+  5 | ***[#Orange] Colored
+      "***"  meta.diagram.tree.wsd markup.heading.level.wsd
+      "[#Orange]"  meta.diagram.tree.wsd constant.other.color.wsd
+      " Colored"  meta.diagram.tree.wsd
+  6 | ** Child two
+      "**"  meta.diagram.tree.wsd markup.heading.level.wsd
+      " Child two"  meta.diagram.tree.wsd
+  7 | -- Left side
+      "--"  meta.diagram.tree.wsd markup.heading.level.wsd
+      " Left side"  meta.diagram.tree.wsd
+  8 | @endmindmap
+      "@endmindmap"  meta.diagram.tree.wsd keyword.control.diagram.wsd

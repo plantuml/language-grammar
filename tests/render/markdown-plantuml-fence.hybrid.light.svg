@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="368" height="232" viewBox="0 0 368 232">
+<rect x="0.5" y="0.5" width="367" height="231" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#0550AE" font-weight="bold"># Sequence diagram</tspan></text>
+<text y="50"></text>
+<text y="70"><tspan x="16.0" fill="#1F2328">A PlantUML block inside a Markdown file:</tspan></text>
+<text y="90"></text>
+<text y="110"><tspan x="16.0" fill="#1F2328">```plantuml</tspan></text>
+<text y="130"><tspan x="16.0" fill="#1F2328">@startuml</tspan></text>
+<text y="150"><tspan x="16.0" fill="#1F2328">Alice -&gt; Bob: Hello World</tspan></text>
+<text y="170"><tspan x="16.0" fill="#1F2328">Bob --&gt; Alice: Hi!</tspan></text>
+<text y="190"><tspan x="16.0" fill="#1F2328">@enduml</tspan></text>
+<text y="210"><tspan x="16.0" fill="#1F2328">```</tspan></text>
+</g>
+</svg>

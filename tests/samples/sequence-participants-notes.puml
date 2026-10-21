@@ -1,0 +1,20 @@
+@startuml
+title Order flow
+participant Alice as A
+actor "Bob B" as B #LightBlue
+database DB <<storage>>
+
+A -> B: Place order
+B --> A : Accepted
+A ->> DB: save
+note left of A #yellow: a short note
+note over A, B
+  A note on several lines.
+  The words alt, loop and end are text here.
+end note
+alt success
+  A -[#red]> B: ok
+else failure
+  B -> A: error
+end
+@enduml

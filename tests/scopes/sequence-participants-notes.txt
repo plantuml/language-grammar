@@ -1,0 +1,139 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | title Order flow
+      "title"  diagram.source.wsd keyword.other.title.source.wsd
+      "Order flow"  diagram.source.wsd entity.name.function.title.source.wsd
+  3 | participant Alice as A
+      "participant"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "Alice"  diagram.source.wsd support.variable.source.wsd
+      "as"  diagram.source.wsd keyword.other.other.source.wsd
+      "A"  diagram.source.wsd support.variable.source.wsd
+  4 | actor "Bob B" as B #LightBlue
+      "actor"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "Bob B"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "as"  diagram.source.wsd keyword.other.other.source.wsd
+      "B"  diagram.source.wsd support.variable.source.wsd
+      "#LightBlue"  diagram.source.wsd constant.numeric.colors.source.wsd
+  5 | database DB <<storage>>
+      "database"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "DB"  diagram.source.wsd support.variable.source.wsd
+      " <<"  diagram.source.wsd
+      "storage"  diagram.source.wsd support.variable.source.wsd
+      ">>"  diagram.source.wsd
+  6 | 
+  7 | A -> B: Place order
+      "A"  diagram.source.wsd support.variable.source.wsd
+      "->"  diagram.source.wsd keyword.control.note.source.wsd
+      "B"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " Place order"  diagram.source.wsd meta.comment.message.link.source.wsd
+  8 | B --> A : Accepted
+      "B"  diagram.source.wsd support.variable.source.wsd
+      "-->"  diagram.source.wsd keyword.control.note.source.wsd
+      "A"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " Accepted"  diagram.source.wsd meta.comment.message.link.source.wsd
+  9 | A ->> DB: save
+      "A"  diagram.source.wsd support.variable.source.wsd
+      "->>"  diagram.source.wsd keyword.control.note.source.wsd
+      "DB"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " save"  diagram.source.wsd meta.comment.message.link.source.wsd
+ 10 | note left of A #yellow: a short note
+      "note"  diagram.source.wsd keyword.other.noteof.source.wsd
+      "left"  diagram.source.wsd constant.numeric.noteof.source.wsd
+      "of"  diagram.source.wsd keyword.other.noteof.source.wsd
+      "A"  diagram.source.wsd support.variable.noteof.source.wsd
+      "#yellow"  diagram.source.wsd constant.numeric.noteof.source.wsd
+      ": "  diagram.source.wsd
+      "a short note"  diagram.source.wsd meta.comment.noteof.source.wsd
+ 11 | note over A, B
+      "note"  diagram.source.wsd keyword.other.noteof.source.wsd
+      "over"  diagram.source.wsd keyword.other.noteof.source.wsd
+      "A"  diagram.source.wsd support.variable.noteof.source.wsd
+      ", "  diagram.source.wsd
+      "B"  diagram.source.wsd support.variable.noteof.source.wsd
+ 12 |   A note on several lines.
+      "A"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "n"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "o"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "t"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "o"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "n"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "s"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "v"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "r"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "a"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "l"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "l"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "i"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "n"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "s"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "."  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+ 13 |   The words alt, loop and end are text here.
+      "T"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "h"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "w"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "o"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "r"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "d"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "s"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "a"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "l"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "t"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      ","  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "l"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "o"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "o"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "p"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "a"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "n"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "d"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "n"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "d"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "a"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "r"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "t"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "x"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "t"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "h"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "r"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "e"  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+      "."  diagram.source.wsd meta.comment.multline.noteof.source.wsd
+ 14 | end note
+      "end note"  diagram.source.wsd keyword.other.multline.noteof.source.wsd
+ 15 | alt success
+      "alt"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "success"  diagram.source.wsd support.variable.source.wsd
+ 16 |   A -[#red]> B: ok
+      "A"  diagram.source.wsd support.variable.source.wsd
+      "-"  diagram.source.wsd keyword.control.note.source.wsd
+      "[#red]"  diagram.source.wsd keyword.control.note.source.wsd constant.numeric.link.color.source.wsd
+      ">"  diagram.source.wsd keyword.control.note.source.wsd
+      "B"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " ok"  diagram.source.wsd meta.comment.message.link.source.wsd
+ 17 | else failure
+      "else"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "failure"  diagram.source.wsd support.variable.source.wsd
+ 18 |   B -> A: error
+      "B"  diagram.source.wsd support.variable.source.wsd
+      "->"  diagram.source.wsd keyword.control.note.source.wsd
+      "A"  diagram.source.wsd support.variable.source.wsd
+      ":"  diagram.source.wsd
+      " error"  diagram.source.wsd meta.comment.message.link.source.wsd
+ 19 | end
+      "end"  diagram.source.wsd keyword.other.wholeline.source.wsd
+ 20 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd

@@ -1,0 +1,20 @@
+  1 | @startsalt
+      "@startsalt"  meta.diagram.salt.wsd keyword.control.diagram.wsd
+  2 | {
+      "{"  meta.diagram.salt.wsd keyword.operator.wsd
+  3 |   Login    | "MyName   "
+      "  Login    "  meta.diagram.salt.wsd
+      "|"  meta.diagram.salt.wsd keyword.operator.wsd
+      "\"MyName   \""  meta.diagram.salt.wsd string.quoted.double.wsd
+  4 |   Password | "****     "
+      "  Password "  meta.diagram.salt.wsd
+      "|"  meta.diagram.salt.wsd keyword.operator.wsd
+      "\"****     \""  meta.diagram.salt.wsd string.quoted.double.wsd
+  5 |   [Cancel] | [  OK  ]
+      "[Cancel]"  meta.diagram.salt.wsd entity.name.tag.stereotype.wsd
+      "|"  meta.diagram.salt.wsd keyword.operator.wsd
+      "[  OK  ]"  meta.diagram.salt.wsd entity.name.tag.stereotype.wsd
+  6 | }
+      "}"  meta.diagram.salt.wsd keyword.operator.wsd
+  7 | @endsalt
+      "@endsalt"  meta.diagram.salt.wsd keyword.control.diagram.wsd

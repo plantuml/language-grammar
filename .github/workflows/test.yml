@@ -29,7 +29,11 @@ jobs:
 
       # Information only: it never fails the build.
       - name: Keyword coverage
-        run: npm run --silent coverage -- --markdown >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo '# Current grammar' >> "$GITHUB_STEP_SUMMARY"
+          npm run --silent coverage -- --markdown >> "$GITHUB_STEP_SUMMARY"
+          echo '# Hybrid prototype' >> "$GITHUB_STEP_SUMMARY"
+          npm run --silent coverage -- --markdown --grammar=hybrid >> "$GITHUB_STEP_SUMMARY"
 
       # On failure, regenerate the files so the expected result can be downloaded and compared.
       - name: Regenerate files

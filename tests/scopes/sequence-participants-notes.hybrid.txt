@@ -1,0 +1,79 @@
+  1 | @startuml
+      "@startuml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
+  2 | title Order flow
+      "title"  meta.diagram.uml.wsd keyword.control.wsd
+      "Order flow"  meta.diagram.uml.wsd entity.name.section.title.wsd
+  3 | participant Alice as A
+      "participant"  meta.diagram.uml.wsd storage.type.element.wsd
+      "Alice"  meta.diagram.uml.wsd entity.name.type.wsd
+      "as"  meta.diagram.uml.wsd keyword.control.wsd
+      " A"  meta.diagram.uml.wsd
+  4 | actor "Bob B" as B #LightBlue
+      "actor"  meta.diagram.uml.wsd storage.type.element.wsd
+      "\"Bob B\""  meta.diagram.uml.wsd string.quoted.double.wsd
+      "as"  meta.diagram.uml.wsd keyword.control.wsd
+      " B "  meta.diagram.uml.wsd
+      "#LightBlue"  meta.diagram.uml.wsd constant.other.color.wsd
+  5 | database DB <<storage>>
+      "database"  meta.diagram.uml.wsd storage.type.element.wsd
+      "DB"  meta.diagram.uml.wsd entity.name.type.wsd
+      "<<storage>>"  meta.diagram.uml.wsd entity.name.tag.stereotype.wsd
+  6 | 
+  7 | A -> B: Place order
+      "A "  meta.diagram.uml.wsd
+      "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " B"  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " Place order"  meta.diagram.uml.wsd string.unquoted.label.wsd
+  8 | B --> A : Accepted
+      "B "  meta.diagram.uml.wsd
+      "-->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " A "  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " Accepted"  meta.diagram.uml.wsd string.unquoted.label.wsd
+  9 | A ->> DB: save
+      "A "  meta.diagram.uml.wsd
+      "->>"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " DB"  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " save"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 10 | note left of A #yellow: a short note
+      "note"  meta.diagram.uml.wsd keyword.control.wsd
+      "left"  meta.diagram.uml.wsd keyword.control.wsd
+      "of"  meta.diagram.uml.wsd keyword.control.wsd
+      " A "  meta.diagram.uml.wsd
+      "#yellow"  meta.diagram.uml.wsd constant.other.color.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " a short note"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 11 | note over A, B
+      "note"  meta.diagram.uml.wsd keyword.control.wsd
+      "over"  meta.diagram.uml.wsd keyword.control.wsd
+      " A, B"  meta.diagram.uml.wsd
+ 12 |   A note on several lines.
+      "  A note on several lines."  meta.diagram.uml.wsd string.unquoted.note.wsd
+ 13 |   The words alt, loop and end are text here.
+      "  The words alt, loop and end are text here."  meta.diagram.uml.wsd string.unquoted.note.wsd
+ 14 | end note
+      "end note"  meta.diagram.uml.wsd keyword.control.wsd
+ 15 | alt success
+      "alt"  meta.diagram.uml.wsd keyword.control.wsd
+      " success"  meta.diagram.uml.wsd
+ 16 |   A -[#red]> B: ok
+      "  A "  meta.diagram.uml.wsd
+      "-[#red]>"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " B"  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " ok"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 17 | else failure
+      "else"  meta.diagram.uml.wsd keyword.control.wsd
+      " failure"  meta.diagram.uml.wsd
+ 18 |   B -> A: error
+      "  B "  meta.diagram.uml.wsd
+      "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      " A"  meta.diagram.uml.wsd
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      " error"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 19 | end
+      "end"  meta.diagram.uml.wsd keyword.control.wsd
+ 20 | @enduml
+      "@enduml"  meta.diagram.uml.wsd keyword.control.diagram.wsd

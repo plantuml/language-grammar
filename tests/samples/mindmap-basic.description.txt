@@ -1,0 +1,1 @@
+`@startmindmap`: the levels (`*`, `**`, `-`), a colored node, and a title. The text of a node is not code.

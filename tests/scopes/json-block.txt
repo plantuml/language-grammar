@@ -1,0 +1,43 @@
+  1 | @startjson
+      "@startjson"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | {
+      "{"  diagram.source.wsd
+  3 |   "name": "Alice",
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "name"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      ": "  diagram.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "Alice"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      ","  diagram.source.wsd
+  4 |   "age": 30,
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "age"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      ": "  diagram.source.wsd
+      "30"  diagram.source.wsd support.variable.source.wsd
+      ","  diagram.source.wsd
+  5 |   "tags": ["a", "b"],
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "tags"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      ": ["  diagram.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "a"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      ", "  diagram.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "b"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "],"  diagram.source.wsd
+  6 |   "active": true
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      "active"  diagram.source.wsd string.quoted.double.source.wsd
+      "\""  diagram.source.wsd string.quoted.double.source.wsd
+      ": "  diagram.source.wsd
+      "true"  diagram.source.wsd support.variable.source.wsd
+  7 | }
+      "}"  diagram.source.wsd
+  8 | @endjson
+      "@endjson"  diagram.source.wsd keyword.control.diagram.source.wsd

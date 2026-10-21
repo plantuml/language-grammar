@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="192" viewBox="0 0 200 192">
+<rect x="0.5" y="0.5" width="199" height="191" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startmindmap</tspan></text>
+<text y="50"><tspan x="16.0" fill="#CF222E">title</tspan><tspan x="66.4" fill="#953800">My mind map</tspan></text>
+<text y="70"><tspan x="16.0" fill="#0550AE" font-weight="bold">*</tspan><tspan x="24.4" fill="#1F2328"> Root</tspan></text>
+<text y="90"><tspan x="16.0" fill="#0550AE" font-weight="bold">**</tspan><tspan x="32.8" fill="#1F2328"> Child one</tspan></text>
+<text y="110"><tspan x="16.0" fill="#0550AE" font-weight="bold">***</tspan><tspan x="41.2" fill="#0550AE">[#Orange]</tspan><tspan x="116.8" fill="#1F2328"> Colored</tspan></text>
+<text y="130"><tspan x="16.0" fill="#0550AE" font-weight="bold">**</tspan><tspan x="32.8" fill="#1F2328"> Child two</tspan></text>
+<text y="150"><tspan x="16.0" fill="#0550AE" font-weight="bold">--</tspan><tspan x="32.8" fill="#1F2328"> Left side</tspan></text>
+<text y="170"><tspan x="16.0" fill="#CF222E">@endmindmap</tspan></text>
+</g>
+</svg>

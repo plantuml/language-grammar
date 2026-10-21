@@ -1,0 +1,42 @@
+  1 | @startuml
+      "@startuml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
+  2 | start
+      "start"  meta.diagram.uml.wsd keyword.control.wsd
+  3 | :read the data;
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      "read the data"  meta.diagram.uml.wsd string.unquoted.label.wsd
+      ";"  meta.diagram.uml.wsd keyword.operator.wsd
+  4 | if (valid?) then (yes)
+      "if"  meta.diagram.uml.wsd keyword.control.wsd
+      "(valid?)"  meta.diagram.uml.wsd string.unquoted.label.wsd
+      "then"  meta.diagram.uml.wsd keyword.control.wsd
+      "(yes)"  meta.diagram.uml.wsd string.unquoted.label.wsd
+  5 |   :process;
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      "process"  meta.diagram.uml.wsd string.unquoted.label.wsd
+      ";"  meta.diagram.uml.wsd keyword.operator.wsd
+  6 | else (no)
+      "else"  meta.diagram.uml.wsd keyword.control.wsd
+      "(no)"  meta.diagram.uml.wsd string.unquoted.label.wsd
+  7 |   :report an error;
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      "report an error"  meta.diagram.uml.wsd string.unquoted.label.wsd
+      ";"  meta.diagram.uml.wsd keyword.operator.wsd
+  8 | endif
+      "endif"  meta.diagram.uml.wsd keyword.control.wsd
+  9 | while (more data?) is (yes)
+      "while"  meta.diagram.uml.wsd keyword.control.wsd
+      "(more data?)"  meta.diagram.uml.wsd string.unquoted.label.wsd
+      "is"  meta.diagram.uml.wsd keyword.control.wsd
+      "(yes)"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 10 |   :next;
+      ":"  meta.diagram.uml.wsd keyword.operator.wsd
+      "next"  meta.diagram.uml.wsd string.unquoted.label.wsd
+      ";"  meta.diagram.uml.wsd keyword.operator.wsd
+ 11 | endwhile (no)
+      "endwhile"  meta.diagram.uml.wsd keyword.control.wsd
+      "(no)"  meta.diagram.uml.wsd string.unquoted.label.wsd
+ 12 | stop
+      "stop"  meta.diagram.uml.wsd keyword.control.wsd
+ 13 | @enduml
+      "@enduml"  meta.diagram.uml.wsd keyword.control.diagram.wsd

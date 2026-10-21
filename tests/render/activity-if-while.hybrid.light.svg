@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="259" height="292" viewBox="0 0 259 292">
+<rect x="0.5" y="0.5" width="258" height="291" rx="6" fill="#ffffff" stroke="#d1d9e0"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#1f2328" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#CF222E">@startuml</tspan></text>
+<text y="50"><tspan x="16.0" fill="#CF222E">start</tspan></text>
+<text y="70"><tspan x="16.0" fill="#CF222E">:</tspan><tspan x="24.4" fill="#0A3069">read the data</tspan><tspan x="133.6" fill="#CF222E">;</tspan></text>
+<text y="90"><tspan x="16.0" fill="#CF222E">if</tspan><tspan x="41.2" fill="#0A3069">(valid?)</tspan><tspan x="116.8" fill="#CF222E">then</tspan><tspan x="158.8" fill="#0A3069">(yes)</tspan></text>
+<text y="110"><tspan x="32.8" fill="#CF222E">:</tspan><tspan x="41.2" fill="#0A3069">process</tspan><tspan x="100.0" fill="#CF222E">;</tspan></text>
+<text y="130"><tspan x="16.0" fill="#CF222E">else</tspan><tspan x="58.0" fill="#0A3069">(no)</tspan></text>
+<text y="150"><tspan x="32.8" fill="#CF222E">:</tspan><tspan x="41.2" fill="#0A3069">report an error</tspan><tspan x="167.2" fill="#CF222E">;</tspan></text>
+<text y="170"><tspan x="16.0" fill="#CF222E">endif</tspan></text>
+<text y="190"><tspan x="16.0" fill="#CF222E">while</tspan><tspan x="66.4" fill="#0A3069">(more data?)</tspan><tspan x="175.6" fill="#CF222E">is</tspan><tspan x="200.8" fill="#0A3069">(yes)</tspan></text>
+<text y="210"><tspan x="32.8" fill="#CF222E">:</tspan><tspan x="41.2" fill="#0A3069">next</tspan><tspan x="74.8" fill="#CF222E">;</tspan></text>
+<text y="230"><tspan x="16.0" fill="#CF222E">endwhile</tspan><tspan x="91.6" fill="#0A3069">(no)</tspan></text>
+<text y="250"><tspan x="16.0" fill="#CF222E">stop</tspan></text>
+<text y="270"><tspan x="16.0" fill="#CF222E">@enduml</tspan></text>
+</g>
+</svg>
