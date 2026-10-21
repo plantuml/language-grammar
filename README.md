@@ -19,7 +19,7 @@ Formal grammar definition for the PlantUML language, designed for syntax parsing
 
 | Path | Content |
 | --- | --- |
-| `syntaxes/` | The TextMate grammar (`source.wsd`), currently the one used by GitHub Linguist, taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT). |
+| `syntaxes/` | The TextMate grammar (`source.wsd`) and the Markdown injection grammar (`codeblock.json`, scope `markdown.plantuml.codeblock`) used by GitHub Linguist, taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT). |
 | `tests/samples/` | PlantUML samples used to test the grammar. |
 | `tests/scopes/` | For each sample, the TextMate scopes assigned to every token (regression snapshots). |
 | `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes. |
@@ -43,6 +43,17 @@ Bob --> Alice: Hi!
   <source media="(prefers-color-scheme: dark)" srcset="tests/render/sequence-hello-world.dark.svg">
   <img alt="sequence-hello-world.puml highlighted with the PlantUML grammar" src="tests/render/sequence-hello-world.light.svg">
 </picture>
+
+### `markdown-plantuml-fence.md`
+
+A `plantuml` fenced block inside a Markdown file, highlighted through the injection grammar.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="tests/render/markdown-plantuml-fence.dark.svg">
+  <img alt="markdown-plantuml-fence.md highlighted with the PlantUML grammar" src="tests/render/markdown-plantuml-fence.light.svg">
+</picture>
+
+Whether GitHub itself uses the injection grammar for Markdown is not known: the Markdown renderer may resolve the `plantuml` fence directly to the language through Linguist. The injection grammar is kept because the current Linguist entry for this grammar lists both scopes.
 
 ## Running the tests
 

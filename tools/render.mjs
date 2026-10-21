@@ -19,10 +19,14 @@ const samplesDir = path.join(root, 'tests', 'samples');
 const scopesDir = path.join(root, 'tests', 'scopes');
 const renderDir = path.join(root, 'tests', 'render');
 const grammarFile = path.join(root, 'syntaxes', 'plantuml.yaml-tmLanguage');
+const injectionFile = path.join(root, 'syntaxes', 'codeblock.json');
 
 const THEMES = { light: 'github-light-default', dark: 'github-dark-default' };
 const BORDER = { light: '#d1d9e0', dark: '#3d444d' };
 const LANG = 'plantuml';
+const MARKDOWN_SCOPE = 'text.html.markdown';
+// Root scopes are the same on every line of a file, so they are left out of the scope snapshots.
+const ROOT_SCOPES = new Set(['source.wsd', MARKDOWN_SCOPE]);
 
 const CHAR_WIDTH = 8.4;
 const LINE_HEIGHT = 20;
@@ -34,9 +38,14 @@ const FONT_FAMILY =
 const escapeXml = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function loadGrammar() {
+function loadGrammars() {
   const grammar = loadYaml(fs.readFileSync(grammarFile, 'utf8'));
-  return { ...grammar, name: LANG };
+  // The injection grammar makes ```plantuml fenced blocks of Markdown files use the PlantUML grammar.
+  const injection = JSON.parse(fs.readFileSync(injectionFile, 'utf8'));
+  return [
+    { ...grammar, name: LANG },
+    { ...injection, name: 'plantuml-codeblock', injectTo: [MARKDOWN_SCOPE] },
+  ];
 }
 
 // Splits the tokens of a highlighted sample into lines of { text, color, fontStyle }.
@@ -89,7 +98,7 @@ function toScopes(code, tokenResult) {
     for (const token of line) {
       for (const part of token.explanation ?? []) {
         if (part.content.trim() === '') continue;
-        const scopes = part.scopes.map((s) => s.scopeName).filter((s) => s !== 'source.wsd');
+        const scopes = part.scopes.map((s) => s.scopeName).filter((s) => !ROOT_SCOPES.has(s));
         out.push(`      ${JSON.stringify(part.content)}  ${scopes.join(' ')}`);
       }
     }
@@ -102,12 +111,12 @@ async function main() {
 
   const highlighter = await createHighlighter({
     themes: Object.values(THEMES),
-    langs: [loadGrammar()],
+    langs: ['markdown', ...loadGrammars()],
   });
 
   const samples = fs
     .readdirSync(samplesDir)
-    .filter((f) => f.endsWith('.puml') || f.endsWith('.iuml') || f.endsWith('.plantuml'))
+    .filter((f) => ['.puml', '.iuml', '.plantuml', '.md'].includes(path.extname(f)))
     .sort();
 
   if (samples.length === 0) {
@@ -118,12 +127,13 @@ async function main() {
   const expected = new Map();
   for (const file of samples) {
     const name = path.basename(file, path.extname(file));
+    const lang = path.extname(file) === '.md' ? 'markdown' : LANG;
     const code = fs.readFileSync(path.join(samplesDir, file), 'utf8').replace(/\r\n/g, '\n');
     const body = code.endsWith('\n') ? code.slice(0, -1) : code;
 
     for (const [kind, theme] of Object.entries(THEMES)) {
       const tokenResult = highlighter.codeToTokens(body, {
-        lang: LANG,
+        lang,
         theme,
         includeExplanation: true,
       });
