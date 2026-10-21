@@ -1,0 +1,1 @@
+The classic sequence diagram, as a standalone PlantUML file. This tests the grammar directly.

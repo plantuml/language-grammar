@@ -46,6 +46,9 @@ function tokenToHtml(token) {
   return `<span class="t" style="${style}" title="${title}">${text}</span>`;
 }
 
+// Escapes a description and turns `code` spans into <code> elements.
+const descriptionToHtml = (text) => escapeXml(text).replace(/`([^`]+)`/g, '<code>$1</code>');
+
 function sampleToHtml(highlighter, sample) {
   const lines = highlighter.codeToTokensWithThemes(sample.body, {
     lang: sample.lang,
@@ -60,6 +63,7 @@ function sampleToHtml(highlighter, sample) {
   return `
     <section id="${escapeXml(sample.name)}">
       <h2><a href="#${escapeXml(sample.name)}">${escapeXml(sample.file)}</a></h2>
+      ${sample.description ? `<p class="description">${descriptionToHtml(sample.description)}</p>` : ''}
       <p class="links"><a href="${REPO_URL}/blob/main/tests/samples/${encodeURIComponent(sample.file)}">source on GitHub</a></p>
       <pre class="code"><code>${code}</code></pre>
       <details>
@@ -107,6 +111,8 @@ header p { margin: 4px 0; color: var(--muted); }
 section { margin: 32px 0; }
 section h2 { font-size: 20px; margin: 0 0 4px; }
 section h2 a { color: inherit; }
+.description { margin: 0 0 4px; color: var(--muted); }
+.description code { font-size: 90%; padding: 1px 4px; border: 1px solid var(--border); border-radius: 4px; }
 .links { margin: 0 0 8px; font-size: 14px; }
 pre {
   margin: 0; padding: 16px; overflow: auto; border: 1px solid var(--border); border-radius: 6px;

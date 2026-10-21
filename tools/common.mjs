@@ -50,9 +50,15 @@ export function listSamples() {
     .sort()
     .map((file) => {
       const code = fs.readFileSync(path.join(samplesDir, file), 'utf8').replace(/\r\n/g, '\n');
+      const name = path.basename(file, path.extname(file));
+      // Optional one-line description of what the sample tests: <name>.description.txt
+      const descriptionFile = path.join(samplesDir, `${name}.description.txt`);
       return {
         file,
-        name: path.basename(file, path.extname(file)),
+        name,
+        description: fs.existsSync(descriptionFile)
+          ? fs.readFileSync(descriptionFile, 'utf8').trim()
+          : '',
         lang: path.extname(file) === '.md' ? 'markdown' : LANG,
         body: code.endsWith('\n') ? code.slice(0, -1) : code,
       };
