@@ -85,7 +85,8 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 | Path | Content |
 | --- | --- |
 | `syntaxes/` | The TextMate grammar (`source.wsd`) and the Markdown injection grammar (`codeblock.json`), taken from [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml) (MIT). |
-| `tests/samples/` | PlantUML samples used to test the grammar, with an optional `<name>.description.txt` explaining what each one tests. |
+| `tests/samples/` | Hand-picked PlantUML samples used to test the grammar, with an optional `<name>.description.txt` explaining what each one tests. Each one has a scope snapshot and SVG renders. |
+| `tests/vega/` | The Vega corpus: the non-regression tests of PlantUML, copied from the PlantUML repository (514 `.puml` files in folders). Shown in the gallery, without snapshots for now. |
 | `tests/scopes/` | For each sample, the TextMate scopes of every token (snapshots). |
 | `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes. |
 | `tools/` | Node.js scripts that generate and check the files above and build the gallery. |
@@ -94,7 +95,7 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 
 ## Highlighting preview
 
-The [gallery](https://plantuml.github.io/language-grammar/) shows every sample with a theme switch. Here are the same samples as pictures:
+The [gallery](https://plantuml.github.io/language-grammar/) follows the tree of the `tests/` folder: `tests/samples/...` is published as `samples/...` and `tests/vega/...` as `vega/...`, with one page per folder, a theme switch, and the TextMate scopes of every token on hover. Here are two of the hand-picked samples as pictures:
 
 ### `sequence-hello-world.puml`
 

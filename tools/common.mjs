@@ -6,9 +6,10 @@ import { load as loadYaml } from 'js-yaml';
 import { createHighlighter } from 'shiki';
 
 export const root = path.resolve(import.meta.dirname, '..');
-export const samplesDir = path.join(root, 'tests', 'samples');
-export const scopesDir = path.join(root, 'tests', 'scopes');
-export const renderDir = path.join(root, 'tests', 'render');
+export const testsDir = path.join(root, 'tests');
+export const samplesDir = path.join(testsDir, 'samples');
+export const scopesDir = path.join(testsDir, 'scopes');
+export const renderDir = path.join(testsDir, 'render');
 
 const grammarFile = path.join(root, 'syntaxes', 'plantuml.yaml-tmLanguage');
 const injectionFile = path.join(root, 'syntaxes', 'codeblock.json');
@@ -42,29 +43,58 @@ export function createGrammarHighlighter() {
   });
 }
 
-// All the samples of tests/samples: { file, name, lang, body }.
+const isSampleFile = (file) => SAMPLE_EXTENSIONS.includes(path.extname(file));
+
+// Reads one sample: { file, name, description, lang, body }.
+function readSample(dir, file) {
+  const code = fs.readFileSync(path.join(dir, file), 'utf8').replace(/\r\n/g, '\n');
+  const name = path.basename(file, path.extname(file));
+  // Optional one-line description of what the sample tests: <name>.description.txt
+  const descriptionFile = path.join(dir, `${name}.description.txt`);
+  return {
+    file,
+    name,
+    description: fs.existsSync(descriptionFile) ? fs.readFileSync(descriptionFile, 'utf8').trim() : '',
+    lang: path.extname(file) === '.md' ? 'markdown' : LANG,
+    body: code.endsWith('\n') ? code.slice(0, -1) : code,
+  };
+}
+
+const byName = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+
+// All the samples of tests/samples (not recursive): { file, name, description, lang, body }.
 export function listSamples() {
   const samples = fs
     .readdirSync(samplesDir)
-    .filter((f) => SAMPLE_EXTENSIONS.includes(path.extname(f)))
-    .sort()
-    .map((file) => {
-      const code = fs.readFileSync(path.join(samplesDir, file), 'utf8').replace(/\r\n/g, '\n');
-      const name = path.basename(file, path.extname(file));
-      // Optional one-line description of what the sample tests: <name>.description.txt
-      const descriptionFile = path.join(samplesDir, `${name}.description.txt`);
-      return {
-        file,
-        name,
-        description: fs.existsSync(descriptionFile)
-          ? fs.readFileSync(descriptionFile, 'utf8').trim()
-          : '',
-        lang: path.extname(file) === '.md' ? 'markdown' : LANG,
-        body: code.endsWith('\n') ? code.slice(0, -1) : code,
-      };
-    });
+    .filter(isSampleFile)
+    .sort(byName)
+    .map((file) => readSample(samplesDir, file));
   if (samples.length === 0) {
     throw new Error('No sample found in tests/samples');
   }
   return samples;
+}
+
+// The samples of a directory and of all its sub-directories, as a tree:
+// { name, segments, files, dirs, fileCount } where segments is the path from the root of the tree.
+// Directories without any sample are left out.
+export function buildTree(dir, segments = []) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => byName(a.name, b.name));
+  const node = {
+    name: segments.length > 0 ? segments[segments.length - 1] : path.basename(dir),
+    segments,
+    files: [],
+    dirs: [],
+    fileCount: 0,
+  };
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const child = buildTree(path.join(dir, entry.name), [...segments, entry.name]);
+      if (child.fileCount > 0) node.dirs.push(child);
+    } else if (entry.isFile() && isSampleFile(entry.name)) {
+      node.files.push(readSample(dir, entry.name));
+    }
+  }
+  node.fileCount = node.files.length + node.dirs.reduce((n, d) => n + d.fileCount, 0);
+  return node;
 }
