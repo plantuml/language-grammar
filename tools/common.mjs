@@ -29,11 +29,15 @@ export const escapeXml = (s) =>
 // The grammars that can be tested: the one of Linguist today ("upstream") and the prototype ("hybrid").
 export const GRAMMAR_KINDS = ['upstream', 'hybrid'];
 
+// The TextMate grammar of a kind, as a plain object.
+export function readGrammar(kind) {
+  return kind === 'hybrid'
+    ? JSON.parse(fs.readFileSync(hybridFile, 'utf8'))
+    : loadYaml(fs.readFileSync(grammarFile, 'utf8'));
+}
+
 function loadGrammars(kind) {
-  const grammar =
-    kind === 'hybrid'
-      ? JSON.parse(fs.readFileSync(hybridFile, 'utf8'))
-      : loadYaml(fs.readFileSync(grammarFile, 'utf8'));
+  const grammar = readGrammar(kind);
   // The injection grammar makes ```plantuml fenced blocks of Markdown files use the PlantUML grammar.
   const injection = JSON.parse(fs.readFileSync(injectionFile, 'utf8'));
   return [

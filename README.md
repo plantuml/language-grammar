@@ -10,6 +10,8 @@ Syntax definitions for the PlantUML language, designed for syntax highlighting, 
 
 **See how PlantUML code is highlighted, live: <https://plantuml.github.io/language-grammar/>**
 
+**Try your own code: <https://plantuml.github.io/language-grammar/playground/index.html>** (a textarea highlighted live in the browser, with the current grammar or the hybrid prototype).
+
 ## What we are trying to do
 
 When a `.puml` file is displayed on GitHub, its colors come from a **TextMate grammar** declared in [GitHub Linguist](https://github.com/github-linguist/linguist). Today, Linguist takes this grammar from a third-party project, [vscode-plantuml](https://github.com/qjebbs/vscode-plantuml), at a fixed commit (see the [vendor README](https://github.com/github-linguist/linguist/blob/main/vendor/README.md)).

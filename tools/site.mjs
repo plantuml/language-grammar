@@ -10,6 +10,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { build as bundle } from 'esbuild';
 import {
   root,
   testsDir,
@@ -19,6 +20,8 @@ import {
   escapeXml,
   createGrammarHighlighter,
   buildTree,
+  listSamples,
+  readGrammar,
 } from './common.mjs';
 import { computeCoverage, GENERIC_NOTE } from './coverage.mjs';
 
@@ -155,7 +158,7 @@ function grammarSwitch(segments) {
     : `<p class="grammar-switch">Grammar: <a href="${prefix}../${same}index.html">current</a> (the one of GitHub Linguist today) | <strong>hybrid prototype</strong></p>`;
 }
 
-function writePage(segments, { title, header, body }) {
+function writePage(segments, { title, header, body, grammarLinks = true, scripts = '' }) {
   const prefix = '../'.repeat(segments.length);
   const version = commit
     ? `commit <a href="${REPO_URL}/commit/${commit}">${commit}</a>, built on ${built}`
@@ -173,7 +176,7 @@ function writePage(segments, { title, header, body }) {
 <main>
   <header>
 ${header}
-    ${grammarSwitch(segments)}
+    ${grammarLinks ? grammarSwitch(segments) : ''}
 ${themeSwitch}
   </header>
 ${body}
@@ -181,7 +184,7 @@ ${body}
     Rendered with <a href="https://shiki.style">Shiki</a> and the GitHub themes: very close to what GitHub displays, but not guaranteed to be identical. ${version}.
   </footer>
 </main>
-<script src="${prefix}assets/theme.js"></script>
+<script src="${prefix}assets/theme.js"></script>${scripts}
 </body>
 </html>
 `;
@@ -257,6 +260,9 @@ function renderCoverage(coverage) {
 }
 
 function renderHome(sections, coverage) {
+  // The playground is built once, at the root of the site: the hybrid pages go up one level.
+  const playgroundHref =
+    grammarKind === 'hybrid' ? '../playground/index.html?grammar=hybrid' : 'playground/index.html';
   const cards = sections
     .map(({ section, tree }) => {
       const chips = tree.dirs
@@ -279,7 +285,8 @@ function renderHome(sections, coverage) {
     title: 'PlantUML language grammar: highlighting gallery',
     header: `    <h1>PlantUML language grammar</h1>
     <p>Highlighting gallery: PlantUML samples highlighted with the TextMate grammar of <a href="${REPO_URL}">plantuml/language-grammar</a>.</p>
-    <p>The tree of this site is the one of the <code>tests/</code> folder of the repository.</p>${
+    <p>The tree of this site is the one of the <code>tests/</code> folder of the repository.</p>
+    <p><a href="${playgroundHref}"><strong>Playground</strong></a>: type PlantUML code and see it highlighted live.</p>${
       grammarKind === 'hybrid'
         ? '\n    <p><strong>Hybrid prototype</strong>: a grammar generated from <code>data/list-keywords.txt</code> that chooses its rules from the <code>@startXXX</code> line. See <a href="' +
           REPO_URL +
@@ -291,10 +298,67 @@ function renderHome(sections, coverage) {
 }
 
 // ---------------------------------------------------------------------------------------------
+// Playground: a textarea highlighted live in the browser
+// ---------------------------------------------------------------------------------------------
+
+function renderPlayground() {
+  const samples = listSamples().filter((sample) => sample.lang === 'plantuml');
+  const options = samples
+    .map((sample, i) => `<option value="${i}">${escapeXml(sample.file)}</option>`)
+    .join('');
+  // "<" is escaped so that no sample can close the script element.
+  const data = JSON.stringify(samples.map(({ file, body }) => ({ file, body }))).replace(/</g, '\\u003c');
+
+  writePage(['playground'], {
+    title: 'Playground - PlantUML language grammar',
+    grammarLinks: false,
+    header: `    ${breadcrumb(['playground'])}
+    <h1>Playground</h1>
+    <p>Type or paste PlantUML code: it is highlighted as you type with the TextMate grammar of
+    <a href="${REPO_URL}">plantuml/language-grammar</a> and the GitHub themes. Nothing is sent anywhere,
+    everything runs in your browser.</p>`,
+    body: `
+  <div class="pg-controls">
+    <label>Grammar
+      <select id="pg-grammar">
+        <option value="upstream">current (the one of GitHub Linguist today)</option>
+        <option value="hybrid">hybrid prototype</option>
+      </select>
+    </label>
+    <label>Load a sample
+      <select id="pg-sample"><option value="" selected disabled>...</option>${options}</select>
+    </label>
+  </div>
+  <div class="pg-editor">
+    <pre id="pg-output" class="pg-layer" aria-hidden="true"></pre>
+    <textarea id="pg-input" class="pg-layer" spellcheck="false" autocomplete="off" autocapitalize="off" wrap="off" aria-label="PlantUML code">${escapeXml(samples[0].body)}</textarea>
+  </div>
+  <p id="pg-status" class="pg-status" aria-live="polite">Click in the text to see the TextMate scopes of a token.</p>`,
+    scripts: `
+<script>window.PLAYGROUND_SAMPLES = ${data};</script>
+<script type="module" src="../assets/playground.js"></script>`,
+  });
+}
+
+// ---------------------------------------------------------------------------------------------
 // Static assets
 // ---------------------------------------------------------------------------------------------
 
 const CSS = `
+.pg-controls { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.pg-controls select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 3px 6px; margin-left: 4px; }
+.pg-editor { position: relative; height: 480px; min-height: 160px; resize: vertical; overflow: hidden; border: 1px solid var(--border); border-radius: 6px; background: var(--code-bg); }
+/* The textarea sits exactly over the highlighted <pre>, with the same font and padding. */
+.pg-layer {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 16px; border: 0; border-radius: 0;
+  font: 14px/20px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  white-space: pre; word-wrap: normal; tab-size: 4; letter-spacing: normal;
+}
+pre.pg-layer { overflow: hidden; pointer-events: none; background: transparent; }
+textarea.pg-layer { overflow: auto; resize: none; outline: none; background: transparent; color: transparent; caret-color: var(--fg); }
+textarea.pg-layer::selection { background: rgba(84, 174, 255, 0.4); color: transparent; }
+.pg-editor:focus-within { border-color: var(--link); }
+.pg-status { min-height: 1.5em; margin: 8px 0 0; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 .grammar-switch { margin: 8px 0; color: var(--muted); }
 .coverage { width: 100%; border-collapse: collapse; font-size: 14px; }
 .coverage th, .coverage td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--border); vertical-align: top; }
@@ -399,6 +463,24 @@ function writeAssets() {
   fs.writeFileSync(path.join(dir, 'theme.js'), THEME_SCRIPT);
 }
 
+// The script of the playground (Shiki bundled for the browser) and the grammars it loads.
+async function writePlaygroundAssets() {
+  const dir = path.join(outDir, 'assets');
+  await bundle({
+    entryPoints: [path.join(import.meta.dirname, 'playground.entry.js')],
+    outfile: path.join(dir, 'playground.js'),
+    bundle: true,
+    format: 'esm',
+    platform: 'browser',
+    minify: true,
+    legalComments: 'none',
+    logLevel: 'warning',
+  });
+  for (const kind of ['upstream', 'hybrid']) {
+    fs.writeFileSync(path.join(dir, `grammar-${kind}.json`), JSON.stringify(readGrammar(kind)));
+  }
+}
+
 // ---------------------------------------------------------------------------------------------
 
 async function buildSite(kind, dir) {
@@ -422,6 +504,11 @@ async function buildSite(kind, dir) {
   fs.mkdirSync(outDir, { recursive: true });
   writeAssets();
   renderHome(sections, computeCoverage(highlighter));
+  // One playground for the whole site: it lets the visitor choose the grammar.
+  if (kind === 'upstream') {
+    await writePlaygroundAssets();
+    renderPlayground();
+  }
   for (const { section, tree } of sections) renderFolder(highlighter, section, tree);
 
   const pages = fs.readdirSync(outDir, { recursive: true }).filter((f) => f.endsWith('index.html')).length;

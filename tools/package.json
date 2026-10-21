@@ -13,5 +13,8 @@
   "dependencies": {
     "js-yaml": "5.5.0",
     "shiki": "4.5.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }
