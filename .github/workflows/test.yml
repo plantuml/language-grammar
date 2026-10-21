@@ -27,6 +27,10 @@ jobs:
       - name: Check snapshots and renders
         run: npm test
 
+      # Information only: it never fails the build.
+      - name: Keyword coverage
+        run: npm run --silent coverage -- --markdown >> "$GITHUB_STEP_SUMMARY"
+
       # On failure, regenerate the files so the expected result can be downloaded and compared.
       - name: Regenerate files
         if: failure()

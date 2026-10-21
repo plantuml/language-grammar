@@ -89,6 +89,7 @@ It is kept because the current Linguist entry lists both scopes, and it is teste
 | `tests/vega/` | The Vega corpus: the non-regression tests of PlantUML, copied from the PlantUML repository (514 `.puml` files in folders). Shown in the gallery, without snapshots for now. The YAML header that most files have before `@startuml` is a test setting, not PlantUML code: it is ignored. |
 | `tests/scopes/` | For each sample, the TextMate scopes of every token (snapshots). |
 | `tests/render/` | For each sample, the highlighted result as SVG, in the GitHub light and dark themes. |
+| `data/` | Reference data from PlantUML itself: `list-keywords.txt`, the output of `plantuml.jar --list-keywords` (see `data/README.md`). |
 | `tools/` | Node.js scripts that generate and check the files above and build the gallery. |
 | `.github/workflows/` | `test.yml` (checks) and `pages.yml` (gallery). |
 | `puml.ebnf` | Experimental reference grammar (Lark dialect), not used for highlighting. |
@@ -130,6 +131,7 @@ npm ci
 npm run build   # regenerate tests/scopes and tests/render
 npm test        # fail if the generated files are out of date
 npm run site    # build the gallery in site/ (open site/index.html)
+npm run coverage  # how many words of data/list-keywords.txt the grammar recognizes
 ```
 
 To add a test:
@@ -141,6 +143,7 @@ To add a test:
 ## Continuous integration
 
 - **Test** runs on every push and pull request. It fails if `tests/scopes` or `tests/render` are out of date, and uploads the regenerated files as an artifact to help fixing it.
+- The Test job summary also shows the **keyword coverage** of the grammar (information only, it never fails the build); the gallery home page shows it too.
 - **Pages** runs on every push to `main`. It runs the same check, builds the gallery and publishes it with GitHub Pages. It requires *Settings > Pages > Build and deployment > Source* to be set to *GitHub Actions*.
 
 ## License

@@ -20,6 +20,7 @@ import {
   createGrammarHighlighter,
   buildTree,
 } from './common.mjs';
+import { computeCoverage, GENERIC_NOTE } from './coverage.mjs';
 
 const outDir = path.join(root, 'site');
 const REPO_URL = 'https://github.com/plantuml/language-grammar';
@@ -220,7 +221,28 @@ ${samples}`,
   for (const child of node.dirs) renderFolder(highlighter, section, child);
 }
 
-function renderHome(sections) {
+function renderCoverage(coverage) {
+  const rows = coverage
+    .map((r) => {
+      const missing =
+        r.missing.length > 0
+          ? `<details><summary>${r.missing.length} not recognized</summary><p>${r.missing.map((w) => `<code>${escapeXml(w)}</code>`).join(' ')}</p></details>`
+          : '';
+      const note = r.generic ? `<span class="generic">${escapeXml(GENERIC_NOTE)}</span>` : escapeXml(r.note);
+      return `<tr><th scope="row">${escapeXml(r.label)}</th><td class="num">${r.recognized} / ${r.total}</td><td>${note}${missing}</td></tr>`;
+    })
+    .join('\n      ');
+  return `
+  <section class="card">
+    <h2>Keyword coverage <span class="count">information only</span></h2>
+    <p class="description">How many of the words listed by <code>plantuml.jar --list-keywords</code> (<a href="${REPO_URL}/blob/main/data/list-keywords.txt">data/list-keywords.txt</a>) the grammar recognizes.</p>
+    <table class="coverage">
+      ${rows}
+    </table>
+  </section>`;
+}
+
+function renderHome(sections, coverage) {
   const cards = sections
     .map(({ section, tree }) => {
       const chips = tree.dirs
@@ -244,7 +266,7 @@ function renderHome(sections) {
     header: `    <h1>PlantUML language grammar</h1>
     <p>Highlighting gallery: PlantUML samples highlighted with the TextMate grammar of <a href="${REPO_URL}">plantuml/language-grammar</a>.</p>
     <p>The tree of this site is the one of the <code>tests/</code> folder of the repository.</p>`,
-    body: cards,
+    body: cards + renderCoverage(coverage),
   });
 }
 
@@ -253,6 +275,12 @@ function renderHome(sections) {
 // ---------------------------------------------------------------------------------------------
 
 const CSS = `
+.coverage { width: 100%; border-collapse: collapse; font-size: 14px; }
+.coverage th, .coverage td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--border); vertical-align: top; }
+.coverage .num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.coverage .generic { color: var(--muted); }
+.coverage details { margin-top: 4px; color: var(--muted); }
+.coverage details code { margin-right: 4px; }
 :root {
   --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --link: #0969da;
   --code-bg: #ffffff; --code-fg: #1f2328; --card-bg: #f6f8fa;
@@ -370,7 +398,7 @@ async function main() {
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(outDir, { recursive: true });
   writeAssets();
-  renderHome(sections);
+  renderHome(sections, computeCoverage(highlighter));
   for (const { section, tree } of sections) renderFolder(highlighter, section, tree);
 
   const pages = fs.readdirSync(outDir, { recursive: true }).filter((f) => f.endsWith('index.html')).length;
