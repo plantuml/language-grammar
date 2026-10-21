@@ -7,18 +7,18 @@
 <text y="90"><tspan x="16.0" fill="#FF7B72">actor</tspan><tspan x="66.4" fill="#A5D6FF">&quot;Bob B&quot;</tspan><tspan x="133.6" fill="#FF7B72">as</tspan><tspan x="150.4" fill="#E6EDF3"> B </tspan><tspan x="175.6" fill="#79C0FF">#LightBlue</tspan></text>
 <text y="110"><tspan x="16.0" fill="#FF7B72">database</tspan><tspan x="91.6" fill="#FFA657">DB</tspan><tspan x="116.8" fill="#7EE787">&lt;&lt;storage&gt;&gt;</tspan></text>
 <text y="130"></text>
-<text y="150"><tspan x="16.0" fill="#E6EDF3">A </tspan><tspan x="32.8" fill="#FF7B72">-&gt;</tspan><tspan x="49.6" fill="#E6EDF3"> B</tspan><tspan x="66.4" fill="#FF7B72">:</tspan><tspan x="74.8" fill="#A5D6FF"> Place order</tspan></text>
-<text y="170"><tspan x="16.0" fill="#E6EDF3">B </tspan><tspan x="32.8" fill="#FF7B72">--&gt;</tspan><tspan x="58.0" fill="#E6EDF3"> A </tspan><tspan x="83.2" fill="#FF7B72">:</tspan><tspan x="91.6" fill="#A5D6FF"> Accepted</tspan></text>
-<text y="190"><tspan x="16.0" fill="#E6EDF3">A </tspan><tspan x="32.8" fill="#FF7B72">-&gt;&gt;</tspan><tspan x="58.0" fill="#E6EDF3"> DB</tspan><tspan x="83.2" fill="#FF7B72">:</tspan><tspan x="91.6" fill="#A5D6FF"> save</tspan></text>
+<text y="150"><tspan x="16.0" fill="#FFA657">A</tspan><tspan x="32.8" fill="#FF7B72">-&gt;</tspan><tspan x="58.0" fill="#FFA657">B</tspan><tspan x="66.4" fill="#FF7B72">:</tspan><tspan x="74.8" fill="#A5D6FF"> Place order</tspan></text>
+<text y="170"><tspan x="16.0" fill="#FFA657">B</tspan><tspan x="32.8" fill="#FF7B72">--&gt;</tspan><tspan x="66.4" fill="#FFA657">A</tspan><tspan x="83.2" fill="#FF7B72">:</tspan><tspan x="91.6" fill="#A5D6FF"> Accepted</tspan></text>
+<text y="190"><tspan x="16.0" fill="#FFA657">A</tspan><tspan x="32.8" fill="#FF7B72">-&gt;&gt;</tspan><tspan x="66.4" fill="#FFA657">DB</tspan><tspan x="83.2" fill="#FF7B72">:</tspan><tspan x="91.6" fill="#A5D6FF"> save</tspan></text>
 <text y="210"><tspan x="16.0" fill="#FF7B72">note</tspan><tspan x="58.0" fill="#FF7B72">left</tspan><tspan x="100.0" fill="#FF7B72">of</tspan><tspan x="116.8" fill="#E6EDF3"> A </tspan><tspan x="142.0" fill="#79C0FF">#yellow</tspan><tspan x="200.8" fill="#FF7B72">:</tspan><tspan x="209.2" fill="#A5D6FF"> a short note</tspan></text>
 <text y="230"><tspan x="16.0" fill="#FF7B72">note</tspan><tspan x="58.0" fill="#FF7B72">over</tspan><tspan x="91.6" fill="#E6EDF3"> A, B</tspan></text>
 <text y="250"><tspan x="16.0" fill="#A5D6FF">  A note on several lines.</tspan></text>
 <text y="270"><tspan x="16.0" fill="#A5D6FF">  The words alt, loop and end are text here.</tspan></text>
 <text y="290"><tspan x="16.0" fill="#FF7B72">end note</tspan></text>
 <text y="310"><tspan x="16.0" fill="#FF7B72">alt</tspan><tspan x="41.2" fill="#E6EDF3"> success</tspan></text>
-<text y="330"><tspan x="16.0" fill="#E6EDF3">  A </tspan><tspan x="49.6" fill="#FF7B72">-[#red]&gt;</tspan><tspan x="116.8" fill="#E6EDF3"> B</tspan><tspan x="133.6" fill="#FF7B72">:</tspan><tspan x="142.0" fill="#A5D6FF"> ok</tspan></text>
+<text y="330"><tspan x="32.8" fill="#FFA657">A</tspan><tspan x="49.6" fill="#FF7B72">-[#red]&gt;</tspan><tspan x="125.2" fill="#FFA657">B</tspan><tspan x="133.6" fill="#FF7B72">:</tspan><tspan x="142.0" fill="#A5D6FF"> ok</tspan></text>
 <text y="350"><tspan x="16.0" fill="#FF7B72">else</tspan><tspan x="49.6" fill="#E6EDF3"> failure</tspan></text>
-<text y="370"><tspan x="16.0" fill="#E6EDF3">  B </tspan><tspan x="49.6" fill="#FF7B72">-&gt;</tspan><tspan x="66.4" fill="#E6EDF3"> A</tspan><tspan x="83.2" fill="#FF7B72">:</tspan><tspan x="91.6" fill="#A5D6FF"> error</tspan></text>
+<text y="370"><tspan x="32.8" fill="#FFA657">B</tspan><tspan x="49.6" fill="#FF7B72">-&gt;</tspan><tspan x="74.8" fill="#FFA657">A</tspan><tspan x="83.2" fill="#FF7B72">:</tspan><tspan x="91.6" fill="#A5D6FF"> error</tspan></text>
 <text y="390"><tspan x="16.0" fill="#FF7B72">end</tspan></text>
 <text y="410"><tspan x="16.0" fill="#FF7B72">@enduml</tspan></text>
 </g>

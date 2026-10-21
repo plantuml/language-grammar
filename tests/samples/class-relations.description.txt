@@ -1,0 +1,1 @@
+Class relations: names of elements on both sides of an arrow, type parameters (Map<K,V>), qualifiers ([key: type]), a direction written with one letter (-r->), and a relation that starts with a word that is also a type (Map).

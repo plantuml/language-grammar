@@ -20,21 +20,21 @@
       "<<storage>>"  meta.diagram.uml.wsd entity.name.tag.stereotype.wsd
   6 | 
   7 | A -> B: Place order
-      "A "  meta.diagram.uml.wsd
+      "A"  meta.diagram.uml.wsd entity.name.type.wsd
       "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " B"  meta.diagram.uml.wsd
+      "B"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " Place order"  meta.diagram.uml.wsd string.unquoted.label.wsd
   8 | B --> A : Accepted
-      "B "  meta.diagram.uml.wsd
+      "B"  meta.diagram.uml.wsd entity.name.type.wsd
       "-->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " A "  meta.diagram.uml.wsd
+      "A"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " Accepted"  meta.diagram.uml.wsd string.unquoted.label.wsd
   9 | A ->> DB: save
-      "A "  meta.diagram.uml.wsd
+      "A"  meta.diagram.uml.wsd entity.name.type.wsd
       "->>"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " DB"  meta.diagram.uml.wsd
+      "DB"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " save"  meta.diagram.uml.wsd string.unquoted.label.wsd
  10 | note left of A #yellow: a short note
@@ -59,18 +59,18 @@
       "alt"  meta.diagram.uml.wsd keyword.control.wsd
       " success"  meta.diagram.uml.wsd
  16 |   A -[#red]> B: ok
-      "  A "  meta.diagram.uml.wsd
+      "A"  meta.diagram.uml.wsd entity.name.type.wsd
       "-[#red]>"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " B"  meta.diagram.uml.wsd
+      "B"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " ok"  meta.diagram.uml.wsd string.unquoted.label.wsd
  17 | else failure
       "else"  meta.diagram.uml.wsd keyword.control.wsd
       " failure"  meta.diagram.uml.wsd
  18 |   B -> A: error
-      "  B "  meta.diagram.uml.wsd
+      "B"  meta.diagram.uml.wsd entity.name.type.wsd
       "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " A"  meta.diagram.uml.wsd
+      "A"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " error"  meta.diagram.uml.wsd string.unquoted.label.wsd
  19 | end

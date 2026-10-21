@@ -1,0 +1,45 @@
+  1 | @startuml
+      "@startuml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
+  2 | interface Map<K,V>
+      "interface"  meta.diagram.uml.wsd storage.type.element.wsd
+      "Map"  meta.diagram.uml.wsd entity.name.type.wsd
+      "<"  meta.diagram.uml.wsd
+      "K"  meta.diagram.uml.wsd support.type.wsd
+      ","  meta.diagram.uml.wsd
+      "V"  meta.diagram.uml.wsd support.type.wsd
+      ">"  meta.diagram.uml.wsd
+  3 | class HashMap<Long,Customer>
+      "class"  meta.diagram.uml.wsd storage.type.element.wsd
+      "HashMap"  meta.diagram.uml.wsd entity.name.type.wsd
+      "<"  meta.diagram.uml.wsd
+      "Long"  meta.diagram.uml.wsd support.type.wsd
+      ","  meta.diagram.uml.wsd
+      "Customer"  meta.diagram.uml.wsd support.type.wsd
+      ">"  meta.diagram.uml.wsd
+  4 | 
+  5 | Map <|.. HashMap
+      "Map"  meta.diagram.uml.wsd entity.name.type.wsd
+      "<|.."  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      "HashMap"  meta.diagram.uml.wsd entity.name.type.wsd
+  6 | Shop [customerId: long] ---> "customer\n1" Customer
+      "Shop"  meta.diagram.uml.wsd entity.name.type.wsd
+      "["  meta.diagram.uml.wsd
+      "customerId"  meta.diagram.uml.wsd support.type.property-name.wsd
+      ":"  meta.diagram.uml.wsd
+      "long"  meta.diagram.uml.wsd support.type.wsd
+      "]"  meta.diagram.uml.wsd
+      "--->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      "\"customer\\n1\""  meta.diagram.uml.wsd string.quoted.double.wsd
+      "Customer"  meta.diagram.uml.wsd entity.name.type.wsd
+  7 | HashMap [id: Long] -r-> "value" Customer
+      "HashMap"  meta.diagram.uml.wsd entity.name.type.wsd
+      "["  meta.diagram.uml.wsd
+      "id"  meta.diagram.uml.wsd support.type.property-name.wsd
+      ":"  meta.diagram.uml.wsd
+      "Long"  meta.diagram.uml.wsd support.type.wsd
+      "]"  meta.diagram.uml.wsd
+      "-r->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
+      "\"value\""  meta.diagram.uml.wsd string.quoted.double.wsd
+      "Customer"  meta.diagram.uml.wsd entity.name.type.wsd
+  8 | @enduml
+      "@enduml"  meta.diagram.uml.wsd keyword.control.diagram.wsd

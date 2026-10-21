@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="461" height="192" viewBox="0 0 461 192">
+<rect x="0.5" y="0.5" width="460" height="191" rx="6" fill="#0d1117" stroke="#3d444d"/>
+<g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" xml:space="preserve">
+<text y="30"><tspan x="16.0" fill="#FF7B72">@startuml</tspan></text>
+<text y="50"><tspan x="16.0" fill="#FF7B72">interface</tspan><tspan x="100.0" fill="#FFA657">Map</tspan><tspan x="125.2" fill="#E6EDF3">&lt;</tspan><tspan x="133.6" fill="#79C0FF">K</tspan><tspan x="142.0" fill="#E6EDF3">,</tspan><tspan x="150.4" fill="#79C0FF">V</tspan><tspan x="158.8" fill="#E6EDF3">&gt;</tspan></text>
+<text y="70"><tspan x="16.0" fill="#FF7B72">class</tspan><tspan x="66.4" fill="#FFA657">HashMap</tspan><tspan x="125.2" fill="#E6EDF3">&lt;</tspan><tspan x="133.6" fill="#79C0FF">Long</tspan><tspan x="167.2" fill="#E6EDF3">,</tspan><tspan x="175.6" fill="#79C0FF">Customer</tspan><tspan x="242.8" fill="#E6EDF3">&gt;</tspan></text>
+<text y="90"></text>
+<text y="110"><tspan x="16.0" fill="#FFA657">Map</tspan><tspan x="49.6" fill="#FF7B72">&lt;|..</tspan><tspan x="91.6" fill="#FFA657">HashMap</tspan></text>
+<text y="130"><tspan x="16.0" fill="#FFA657">Shop</tspan><tspan x="49.6" fill="#E6EDF3"> [</tspan><tspan x="66.4" fill="#79C0FF">customerId</tspan><tspan x="150.4" fill="#E6EDF3">: </tspan><tspan x="167.2" fill="#79C0FF">long</tspan><tspan x="200.8" fill="#E6EDF3">] </tspan><tspan x="217.6" fill="#FF7B72">---&gt;</tspan><tspan x="259.6" fill="#A5D6FF">&quot;customer\n1&quot;</tspan><tspan x="377.2" fill="#FFA657">Customer</tspan></text>
+<text y="150"><tspan x="16.0" fill="#FFA657">HashMap</tspan><tspan x="74.8" fill="#E6EDF3"> [</tspan><tspan x="91.6" fill="#79C0FF">id</tspan><tspan x="108.4" fill="#E6EDF3">: </tspan><tspan x="125.2" fill="#79C0FF">Long</tspan><tspan x="158.8" fill="#E6EDF3">] </tspan><tspan x="175.6" fill="#FF7B72">-r-&gt;</tspan><tspan x="217.6" fill="#A5D6FF">&quot;value&quot;</tspan><tspan x="284.8" fill="#FFA657">Customer</tspan></text>
+<text y="170"><tspan x="16.0" fill="#FF7B72">@enduml</tspan></text>
+</g>
+</svg>

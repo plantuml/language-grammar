@@ -45,7 +45,8 @@ export const SCOPES = {
   commentLine: 'comment.line.wsd', // grey
   commentBlock: 'comment.block.wsd', // grey
   task: 'entity.name.function.task.wsd', // purple  [Task] in Gantt
-  property: 'support.type.property-name.wsd', // blue    key = value
+  property: 'support.type.property-name.wsd', // blue    key = value, [key: type]
+  dataType: 'support.type.wsd', // blue    K and V in Map<K,V>, long in [id: long]
   level: 'markup.heading.level.wsd', // blue    * ** *** of a mind map
 };
 
@@ -91,7 +92,8 @@ function buildRepository(lists) {
 
   const ARROW_HEAD = '[<ox*+#!/\\\\|^]';
   const ARROW_TAIL = '[>ox*+#!/\\\\|^]';
-  const CORE = '[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right)(?=[-.=]))*';
+  // The direction can be written in full (-up->) or with one letter (-u->, -r->).
+  const CORE = '[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right|[udlr])(?=[-.=]))*';
   const ARROW =
     `(?:(?<![\\w])${ARROW_HEAD}{1,2}${CORE}${ARROW_TAIL}{0,2}` +
     `|${CORE}(?:[>*+#!/\\\\|^]{1,2}[ox]?|[ox](?![\\w]))` +
@@ -101,11 +103,15 @@ function buildRepository(lists) {
     `(#)(?:${alternation(colors)}|[0-9a-f]{8}|[0-9a-f]{6}|[0-9a-f]{3})\\b`
   );
 
+  const NAME = '[A-Za-z_][\\w.$]*';
+  const QUOTED = '"(?:[^"\\\\\\n]|\\\\.)*"';
+
   // What can appear in the rest of a line that started with a keyword or a type.
   const inlinePatterns = [
     { include: '#string' },
     { include: '#color' },
     { include: '#stereotype' },
+    { include: '#generic' },
     { include: '#label' },
     { include: '#parenthesis' },
     { match: ci(`\\b(${alternation(keywords)})\\b`), name: SCOPES.keyword },
@@ -123,6 +129,19 @@ function buildRepository(lists) {
     string: { name: SCOPES.string, match: '"(?:[^"\\\\\\n]|\\\\.)*"' },
     color: { name: SCOPES.color, match: colorPattern },
     stereotype: { name: SCOPES.stereotype, match: '<<[^>\\n]*>>' },
+    generic: {
+      comment: 'Map<K,V>: the type parameters (not << >>, which is a stereotype)',
+      match: '(?<!<)(<)(?!<)([^<>\\n]*)(>)(?!>)',
+      captures: { 2: { patterns: [{ name: SCOPES.dataType, match: '[A-Za-z_][\\w.]*' }] } },
+    },
+    qualifier: {
+      comment: '[customerId: long] before an arrow: the name of the key, then its type',
+      patterns: [
+        { name: SCOPES.property, match: '[A-Za-z_][\\w.]*(?=\\s*:)' },
+        { match: '(?<=:)\\s*([A-Za-z_][\\w.]*)', captures: { 1: { name: SCOPES.dataType } } },
+        { name: SCOPES.property, match: '[A-Za-z_][\\w.]*' },
+      ],
+    },
     label: {
       comment: 'text after the colon of a message, a note or a relation',
       match: '(:)(?!:)(.*)$',
@@ -249,6 +268,34 @@ function buildRepository(lists) {
     },
 
     // ----- sequence, class, ... : arrows and their label -----
+    relation: {
+      comment:
+        'A -> B, or A [key: type] "1" -> "n" B: the elements on each side of the arrow get the color of element names',
+      begin: `^\\s*(${QUOTED}|${NAME})(?:\\s*(\\[[^\\]\\n]*\\]))?(?:\\s*(${QUOTED}))?\\s*(${ARROW})`,
+      beginCaptures: {
+        1: {
+          patterns: [
+            { name: SCOPES.string, match: QUOTED },
+            { name: SCOPES.elementName, match: NAME },
+          ],
+        },
+        2: { patterns: [{ include: '#qualifier' }] },
+        3: { name: SCOPES.string },
+        4: { name: SCOPES.arrow },
+      },
+      end: '$',
+      patterns: [
+        {
+          comment: 'the element after the arrow, with an optional multiplicity before it',
+          match: `\\G\\s*(${QUOTED})?\\s*(${NAME})`,
+          captures: { 1: { name: SCOPES.string }, 2: { name: SCOPES.elementName } },
+        },
+        { include: '#label' },
+        { include: '#string' },
+        { include: '#color' },
+        { include: '#stereotype' },
+      ],
+    },
     arrow: {
       begin: ARROW,
       beginCaptures: { 0: { name: SCOPES.arrow } },
@@ -390,6 +437,8 @@ function umlBody() {
     { include: '#title' },
     { include: '#separator' },
     { include: '#action' },
+    // Before #statement: "Map <|.. HashMap" is a relation, not the declaration of a map.
+    { include: '#relation' },
     { include: '#statement' },
     { include: '#arrow' },
     { include: '#string' },

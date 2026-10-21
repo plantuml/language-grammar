@@ -1,0 +1,53 @@
+  1 | @startuml
+      "@startuml"  diagram.source.wsd keyword.control.diagram.source.wsd
+  2 | interface Map<K,V>
+      "interface"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "Map"  diagram.source.wsd support.variable.source.wsd
+      "<"  diagram.source.wsd
+      "K"  diagram.source.wsd support.variable.source.wsd
+      ","  diagram.source.wsd
+      "V"  diagram.source.wsd support.variable.source.wsd
+      ">"  diagram.source.wsd
+  3 | class HashMap<Long,Customer>
+      "class"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "HashMap"  diagram.source.wsd support.variable.source.wsd
+      "<"  diagram.source.wsd
+      "Long"  diagram.source.wsd support.variable.source.wsd
+      ","  diagram.source.wsd
+      "Customer"  diagram.source.wsd support.variable.source.wsd
+      ">"  diagram.source.wsd
+  4 | 
+  5 | Map <|.. HashMap
+      "Map"  diagram.source.wsd keyword.other.linebegin.source.wsd
+      "<|.."  diagram.source.wsd keyword.control.note.source.wsd
+      "HashMap"  diagram.source.wsd support.variable.source.wsd
+  6 | Shop [customerId: long] ---> "customer\n1" Customer
+      "Shop"  diagram.source.wsd support.variable.source.wsd
+      " ["  diagram.source.wsd
+      "customerId"  diagram.source.wsd support.variable.source.wsd
+      ": "  diagram.source.wsd
+      "long"  diagram.source.wsd support.variable.source.wsd
+      "] "  diagram.source.wsd
+      "--->"  diagram.source.wsd keyword.control.note.source.wsd
+      " \""  diagram.source.wsd
+      "customer"  diagram.source.wsd support.variable.source.wsd
+      "\\"  diagram.source.wsd
+      "n1"  diagram.source.wsd support.variable.source.wsd
+      "\" "  diagram.source.wsd
+      "Customer"  diagram.source.wsd support.variable.source.wsd
+  7 | HashMap [id: Long] -r-> "value" Customer
+      "HashMap"  diagram.source.wsd support.variable.source.wsd
+      " ["  diagram.source.wsd
+      "id"  diagram.source.wsd support.variable.source.wsd
+      ": "  diagram.source.wsd
+      "Long"  diagram.source.wsd support.variable.source.wsd
+      "] "  diagram.source.wsd
+      "-"  diagram.source.wsd keyword.control.note.source.wsd
+      "r"  diagram.source.wsd support.variable.source.wsd
+      "->"  diagram.source.wsd keyword.control.note.source.wsd
+      " \""  diagram.source.wsd
+      "value"  diagram.source.wsd support.variable.source.wsd
+      "\" "  diagram.source.wsd
+      "Customer"  diagram.source.wsd support.variable.source.wsd
+  8 | @enduml
+      "@enduml"  diagram.source.wsd keyword.control.diagram.source.wsd

@@ -11,7 +11,7 @@
 <text y="170"><tspan x="16.0" fill="#8B949E">/' a block</tspan></text>
 <text y="190"><tspan x="16.0" fill="#8B949E">   comment '/</tspan></text>
 <text y="210"><tspan x="16.0" fill="#FF7B72">participant</tspan><tspan x="116.8" fill="#FFA657">$name</tspan></text>
-<text y="230"><tspan x="16.0" fill="#E6EDF3">Alice </tspan><tspan x="66.4" fill="#FF7B72">-&gt;</tspan><tspan x="83.2" fill="#E6EDF3"> Bob</tspan><tspan x="116.8" fill="#FF7B72">:</tspan><tspan x="125.2" fill="#A5D6FF"> %date()</tspan></text>
+<text y="230"><tspan x="16.0" fill="#FFA657">Alice</tspan><tspan x="66.4" fill="#FF7B72">-&gt;</tspan><tspan x="91.6" fill="#FFA657">Bob</tspan><tspan x="116.8" fill="#FF7B72">:</tspan><tspan x="125.2" fill="#A5D6FF"> %date()</tspan></text>
 <text y="250"><tspan x="16.0" fill="#FF7B72">@enduml</tspan></text>
 </g>
 </svg>

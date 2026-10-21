@@ -256,6 +256,41 @@
       "name": "entity.name.tag.stereotype.wsd",
       "match": "<<[^>\\n]*>>"
     },
+    "generic": {
+      "comment": "Map<K,V>: the type parameters (not << >>, which is a stereotype)",
+      "match": "(?<!<)(<)(?!<)([^<>\\n]*)(>)(?!>)",
+      "captures": {
+        "2": {
+          "patterns": [
+            {
+              "name": "support.type.wsd",
+              "match": "[A-Za-z_][\\w.]*"
+            }
+          ]
+        }
+      }
+    },
+    "qualifier": {
+      "comment": "[customerId: long] before an arrow: the name of the key, then its type",
+      "patterns": [
+        {
+          "name": "support.type.property-name.wsd",
+          "match": "[A-Za-z_][\\w.]*(?=\\s*:)"
+        },
+        {
+          "match": "(?<=:)\\s*([A-Za-z_][\\w.]*)",
+          "captures": {
+            "1": {
+              "name": "support.type.wsd"
+            }
+          }
+        },
+        {
+          "name": "support.type.property-name.wsd",
+          "match": "[A-Za-z_][\\w.]*"
+        }
+      ]
+    },
     "label": {
       "comment": "text after the colon of a message, a note or a relation",
       "match": "(:)(?!:)(.*)$",
@@ -442,6 +477,9 @@
                   "include": "#stereotype"
                 },
                 {
+                  "include": "#generic"
+                },
+                {
                   "include": "#label"
                 },
                 {
@@ -482,6 +520,9 @@
                 },
                 {
                   "include": "#stereotype"
+                },
+                {
+                  "include": "#generic"
                 },
                 {
                   "include": "#label"
@@ -542,6 +583,9 @@
               "include": "#stereotype"
             },
             {
+              "include": "#generic"
+            },
+            {
               "include": "#label"
             },
             {
@@ -576,6 +620,9 @@
               "include": "#stereotype"
             },
             {
+              "include": "#generic"
+            },
+            {
               "include": "#label"
             },
             {
@@ -592,8 +639,66 @@
         }
       ]
     },
+    "relation": {
+      "comment": "A -> B, or A [key: type] \"1\" -> \"n\" B: the elements on each side of the arrow get the color of element names",
+      "begin": "^\\s*(\"(?:[^\"\\\\\\n]|\\\\.)*\"|[A-Za-z_][\\w.$]*)(?:\\s*(\\[[^\\]\\n]*\\]))?(?:\\s*(\"(?:[^\"\\\\\\n]|\\\\.)*\"))?\\s*((?:(?<![\\w])[<ox*+#!/\\\\|^]{1,2}[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right|[udlr])(?=[-.=]))*[>ox*+#!/\\\\|^]{0,2}|[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right|[udlr])(?=[-.=]))*(?:[>*+#!/\\\\|^]{1,2}[ox]?|[ox](?![\\w]))|[-.](?:[-.]|\\[[^\\]\\n]*\\])+))",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "name": "string.quoted.double.wsd",
+              "match": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+            },
+            {
+              "name": "entity.name.type.wsd",
+              "match": "[A-Za-z_][\\w.$]*"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#qualifier"
+            }
+          ]
+        },
+        "3": {
+          "name": "string.quoted.double.wsd"
+        },
+        "4": {
+          "name": "keyword.operator.arrow.wsd"
+        }
+      },
+      "end": "$",
+      "patterns": [
+        {
+          "comment": "the element after the arrow, with an optional multiplicity before it",
+          "match": "\\G\\s*(\"(?:[^\"\\\\\\n]|\\\\.)*\")?\\s*([A-Za-z_][\\w.$]*)",
+          "captures": {
+            "1": {
+              "name": "string.quoted.double.wsd"
+            },
+            "2": {
+              "name": "entity.name.type.wsd"
+            }
+          }
+        },
+        {
+          "include": "#label"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#color"
+        },
+        {
+          "include": "#stereotype"
+        }
+      ]
+    },
     "arrow": {
-      "begin": "(?:(?<![\\w])[<ox*+#!/\\\\|^]{1,2}[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right)(?=[-.=]))*[>ox*+#!/\\\\|^]{0,2}|[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right)(?=[-.=]))*(?:[>*+#!/\\\\|^]{1,2}[ox]?|[ox](?![\\w]))|[-.](?:[-.]|\\[[^\\]\\n]*\\])+)",
+      "begin": "(?:(?<![\\w])[<ox*+#!/\\\\|^]{1,2}[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right|[udlr])(?=[-.=]))*[>ox*+#!/\\\\|^]{0,2}|[-.=](?:[-.=]|\\[[^\\]\\n]*\\]|(?:up|down|left|right|[udlr])(?=[-.=]))*(?:[>*+#!/\\\\|^]{1,2}[ox]?|[ox](?![\\w]))|[-.](?:[-.]|\\[[^\\]\\n]*\\])+)",
       "beginCaptures": {
         "0": {
           "name": "keyword.operator.arrow.wsd"
@@ -869,6 +974,9 @@
         },
         {
           "include": "#action"
+        },
+        {
+          "include": "#relation"
         },
         {
           "include": "#statement"

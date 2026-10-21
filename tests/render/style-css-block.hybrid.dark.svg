@@ -8,7 +8,7 @@
 <text y="110"><tspan x="16.0" fill="#E6EDF3">  LineColor red</tspan></text>
 <text y="130"><tspan x="16.0" fill="#E6EDF3">}</tspan></text>
 <text y="150"><tspan x="16.0" fill="#FF7B72">&lt;/style&gt;</tspan></text>
-<text y="170"><tspan x="16.0" fill="#E6EDF3">Alice </tspan><tspan x="66.4" fill="#FF7B72">-&gt;</tspan><tspan x="83.2" fill="#E6EDF3"> Bob</tspan><tspan x="116.8" fill="#FF7B72">:</tspan><tspan x="125.2" fill="#A5D6FF"> styled</tspan></text>
+<text y="170"><tspan x="16.0" fill="#FFA657">Alice</tspan><tspan x="66.4" fill="#FF7B72">-&gt;</tspan><tspan x="91.6" fill="#FFA657">Bob</tspan><tspan x="116.8" fill="#FF7B72">:</tspan><tspan x="125.2" fill="#A5D6FF"> styled</tspan></text>
 <text y="190"><tspan x="16.0" fill="#FF7B72">@enduml</tspan></text>
 </g>
 </svg>

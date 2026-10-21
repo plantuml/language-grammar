@@ -33,9 +33,9 @@
       "participant"  meta.diagram.uml.wsd storage.type.element.wsd
       "$name"  meta.diagram.uml.wsd entity.name.type.wsd
  11 | Alice -> Bob: %date()
-      "Alice "  meta.diagram.uml.wsd
+      "Alice"  meta.diagram.uml.wsd entity.name.type.wsd
       "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " Bob"  meta.diagram.uml.wsd
+      "Bob"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " %date()"  meta.diagram.uml.wsd string.unquoted.label.wsd
  12 | @enduml

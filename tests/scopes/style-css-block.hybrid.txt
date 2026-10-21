@@ -16,9 +16,9 @@
   7 | </style>
       "</style>"  meta.diagram.uml.wsd keyword.control.wsd
   8 | Alice -> Bob: styled
-      "Alice "  meta.diagram.uml.wsd
+      "Alice"  meta.diagram.uml.wsd entity.name.type.wsd
       "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " Bob"  meta.diagram.uml.wsd
+      "Bob"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " styled"  meta.diagram.uml.wsd string.unquoted.label.wsd
   9 | @enduml

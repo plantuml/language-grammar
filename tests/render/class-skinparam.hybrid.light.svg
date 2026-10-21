@@ -14,8 +14,8 @@
 <text y="230"><tspan x="16.0" fill="#1F2328">  + eat()</tspan></text>
 <text y="250"><tspan x="16.0" fill="#1F2328">}</tspan></text>
 <text y="270"><tspan x="16.0" fill="#CF222E">class</tspan><tspan x="66.4" fill="#953800">Dog</tspan></text>
-<text y="290"><tspan x="16.0" fill="#1F2328">Animal </tspan><tspan x="74.8" fill="#CF222E">&lt;|--</tspan><tspan x="108.4" fill="#1F2328"> Dog </tspan><tspan x="150.4" fill="#CF222E">:</tspan><tspan x="158.8" fill="#0A3069"> extends</tspan></text>
-<text y="310"><tspan x="16.0" fill="#1F2328">Dog </tspan><tspan x="49.6" fill="#0A3069">&quot;1&quot;</tspan><tspan x="83.2" fill="#CF222E">*--</tspan><tspan x="116.8" fill="#0A3069">&quot;many&quot;</tspan><tspan x="167.2" fill="#1F2328"> Leg</tspan></text>
+<text y="290"><tspan x="16.0" fill="#953800">Animal</tspan><tspan x="74.8" fill="#CF222E">&lt;|--</tspan><tspan x="116.8" fill="#953800">Dog</tspan><tspan x="150.4" fill="#CF222E">:</tspan><tspan x="158.8" fill="#0A3069"> extends</tspan></text>
+<text y="310"><tspan x="16.0" fill="#953800">Dog</tspan><tspan x="49.6" fill="#0A3069">&quot;1&quot;</tspan><tspan x="83.2" fill="#CF222E">*--</tspan><tspan x="116.8" fill="#0A3069">&quot;many&quot;</tspan><tspan x="175.6" fill="#953800">Leg</tspan></text>
 <text y="330"><tspan x="16.0" fill="#CF222E">@enduml</tspan></text>
 </g>
 </svg>

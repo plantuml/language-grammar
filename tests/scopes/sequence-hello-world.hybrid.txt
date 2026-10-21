@@ -1,15 +1,15 @@
   1 | @startuml
       "@startuml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
   2 | Alice -> Bob: Hello World
-      "Alice "  meta.diagram.uml.wsd
+      "Alice"  meta.diagram.uml.wsd entity.name.type.wsd
       "->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " Bob"  meta.diagram.uml.wsd
+      "Bob"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " Hello World"  meta.diagram.uml.wsd string.unquoted.label.wsd
   3 | Bob --> Alice: Hi!
-      "Bob "  meta.diagram.uml.wsd
+      "Bob"  meta.diagram.uml.wsd entity.name.type.wsd
       "-->"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " Alice"  meta.diagram.uml.wsd
+      "Alice"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " Hi!"  meta.diagram.uml.wsd string.unquoted.label.wsd
   4 | @enduml

@@ -36,16 +36,16 @@
       "class"  meta.diagram.uml.wsd storage.type.element.wsd
       "Dog"  meta.diagram.uml.wsd entity.name.type.wsd
  14 | Animal <|-- Dog : extends
-      "Animal "  meta.diagram.uml.wsd
+      "Animal"  meta.diagram.uml.wsd entity.name.type.wsd
       "<|--"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
-      " Dog "  meta.diagram.uml.wsd
+      "Dog"  meta.diagram.uml.wsd entity.name.type.wsd
       ":"  meta.diagram.uml.wsd keyword.operator.wsd
       " extends"  meta.diagram.uml.wsd string.unquoted.label.wsd
  15 | Dog "1" *-- "many" Leg
-      "Dog "  meta.diagram.uml.wsd
+      "Dog"  meta.diagram.uml.wsd entity.name.type.wsd
       "\"1\""  meta.diagram.uml.wsd string.quoted.double.wsd
       "*--"  meta.diagram.uml.wsd keyword.operator.arrow.wsd
       "\"many\""  meta.diagram.uml.wsd string.quoted.double.wsd
-      " Leg"  meta.diagram.uml.wsd
+      "Leg"  meta.diagram.uml.wsd entity.name.type.wsd
  16 | @enduml
       "@enduml"  meta.diagram.uml.wsd keyword.control.diagram.wsd
